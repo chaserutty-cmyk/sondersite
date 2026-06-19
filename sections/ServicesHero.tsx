@@ -30,6 +30,7 @@ import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
 import { prefersReducedMotion } from "@/lib/motion";
 import LiveCoord from "@/components/LiveCoord";
+import ServicesMobile from "@/components/ServicesMobile";
 
 /** Shared mono caps for the section's header/footer editorial chrome. */
 const chromeMono = {
@@ -60,7 +61,7 @@ const chromeMono = {
 const RAIL_BOUNDARY_MID = "calc(32% + var(--gutter) * 0.36)";
 const RAIL_BOUNDARY_RIGHT = "calc(70% - var(--gutter) * 0.40)";
 
-type Service = {
+export type Service = {
   num: string;
   title: string;
   desc: string;
@@ -70,7 +71,7 @@ type Service = {
   imageAlt: string;
 };
 
-const SERVICES: Service[] = [
+export const SERVICES: Service[] = [
   {
     num: "01",
     title: "BRAND STRATEGY",
@@ -102,10 +103,10 @@ and movement.`,
   },
   {
     num: "04",
-    title: "MOTION & FILM",
-    desc: `Cinematic visuals and
-motion systems that bring
-stories to life.`,
+    title: "AI SYSTEMS",
+    desc: `Intelligent systems that
+personalize, predict, and
+scale every interaction.`,
     image: "/assets/services/orbital_elegance_in_soft_tones.png",
     imageAlt: "Lunar sphere with a brass orbital ring on ivory paper",
   },
@@ -215,6 +216,9 @@ export default function ServicesHero() {
         paddingTop: "clamp(56px, 7vh, 84px)",
       }}
     >
+      {/* Desktop composition — display:contents shell (byte-identical desktop;
+          hidden in one rule on mobile, where ServicesMobile takes over). */}
+      <div className="services-desktop">
       {/* Slim chapter strip — left-anchored only, so it clears the fixed nav's
           logotype (left) and never collides with MENU (right). Its bottom
           hairline is the top rule of the services table. */}
@@ -657,6 +661,10 @@ gravitational pull.`}
           <span aria-hidden style={{ color: "var(--gold)" }}>&rarr;</span>
         </a>
       </footer>
+      </div>
+
+      {/* Portrait-edition composition — mobile only (≤767px). */}
+      <ServicesMobile />
     </section>
   );
 }

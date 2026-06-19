@@ -39,6 +39,7 @@ import { prefersReducedMotion } from "@/lib/motion";
 import Crosshair from "@/components/Crosshair";
 import DayNightCluster from "@/components/DayNightCluster";
 import SparkleGlyph from "@/components/SparkleGlyph";
+import WorldMobile from "@/components/WorldMobile";
 
 export default function WorldHero() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -81,6 +82,11 @@ export default function WorldHero() {
         paddingRight: "var(--gutter)",
       }}
     >
+      {/* Desktop composition — wrapped in a display:contents shell so the
+          absolute children still position against the section unchanged on
+          desktop, while the whole spread can be hidden in one rule on mobile,
+          where WorldMobile takes over with a portrait-native composition. */}
+      <div className="world-desktop">
       {/* (Whisper draft grid removed — it read as unfinished scaffolding. The
           site-wide paper grain now carries the texture, and the registration
           crosshairs below remain as the intentional measured marks.) */}
@@ -387,6 +393,9 @@ export default function WorldHero() {
           pointerEvents: "none",
         }}
       />
+      </div>
+      {/* Portrait-edition composition — mobile only (≤767px). */}
+      <WorldMobile />
     </section>
   );
 }

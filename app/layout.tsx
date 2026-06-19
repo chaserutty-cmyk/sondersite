@@ -4,6 +4,7 @@ import "./globals.css";
 import GoldCursor from "@/components/GoldCursor";
 import SmoothScroll from "@/components/SmoothScroll";
 import Intro from "@/components/Intro";
+import MobileAtmosphere from "@/components/MobileAtmosphere";
 
 const serif = Cormorant_Garamond({
   variable: "--font-serif",
@@ -92,6 +93,7 @@ export default function RootLayout({
         <Intro />
         <SmoothScroll />
         <GoldCursor />
+        <MobileAtmosphere />
         {children}
       </body>
     </html>

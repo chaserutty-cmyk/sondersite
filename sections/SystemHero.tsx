@@ -21,6 +21,7 @@ import { forwardRef, useImperativeHandle, useLayoutEffect, useRef } from "react"
 import MaskText from "@/components/MaskText";
 import Polyhedron from "@/components/Polyhedron";
 import PathIndex from "@/components/PathIndex";
+import SystemMobile from "@/components/SystemMobile";
 
 /** Imperative handle so the parent CardPair can fly the satellite during the
  *  post-slide "hold" beat (progress 0 → 1). */
@@ -90,6 +91,9 @@ const SystemHero = forwardRef<SystemFlightHandle>(function SystemHero(_props, re
       {/* (Per-section masthead removed — the persistent EditorialNav now owns
           the SONDER / DIGITAL CO. logotype sitewide.) */}
 
+      {/* Desktop composition — display:contents shell (byte-identical desktop;
+          hidden on mobile, where SystemMobile takes over). */}
+      <div className="system-desktop">
       {/* Top-right technical mesh — pre-rendered linework asset.
           Trimmed PNG (907x513, transparent background, transparent cell
           interiors). Sized large enough to span the upper-right field and
@@ -562,6 +566,10 @@ const SystemHero = forwardRef<SystemFlightHandle>(function SystemHero(_props, re
           />
         </div>
       </div>
+      </div>
+
+      {/* Portrait-edition composition — mobile only (≤767px). */}
+      <SystemMobile />
     </section>
   );
 });

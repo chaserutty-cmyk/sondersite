@@ -29,6 +29,7 @@ import MaskText from "@/components/MaskText";
 import Reveal from "@/components/Reveal";
 import Magnetic from "@/components/Magnetic";
 import SystemAnnotation from "@/components/SystemAnnotation";
+import SignalMobile from "@/components/SignalMobile";
 
 export default function SignalHero() {
   const driftRef = useRef<HTMLDivElement | null>(null);
@@ -79,6 +80,9 @@ export default function SignalHero() {
         paddingBottom: 0,
       }}
     >
+      {/* Desktop composition — display:contents shell (byte-identical desktop;
+          hidden on mobile, where SignalMobile takes over). */}
+      <div className="signal-desktop">
       {/* Section label + top crosshair ---------------------------------------- */}
       <div
         className="relative z-20"
@@ -314,6 +318,10 @@ export default function SignalHero() {
         {/* Horizontal hairline */}
         <EditorialRule />
       </div>
+      </div>
+
+      {/* Portrait-edition composition — mobile only (≤767px). */}
+      <SignalMobile />
     </section>
   );
 }

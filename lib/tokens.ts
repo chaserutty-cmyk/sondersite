@@ -62,11 +62,36 @@ export const navLinks = [
  * without indexing anything real.
  */
 export const systemPaths = [
-  { id: "01", coord: "34.052", label: "Positioning" },
-  { id: "02", coord: "118.243", label: "Narrative" },
-  { id: "03", coord: "118.243", label: "Motion" },
-  { id: "04", coord: "118.053", label: "Interface" },
-  { id: "05", coord: "118.243", label: "Motion" },
+  {
+    id: "01",
+    coord: "34.052",
+    label: "Positioning",
+    note: "Where you stand in the market, made unmistakable.",
+  },
+  {
+    id: "02",
+    coord: "57.118",
+    label: "Narrative",
+    note: "The story that makes people lean in and stay.",
+  },
+  {
+    id: "03",
+    coord: "79.243",
+    label: "Brand Worlds",
+    note: "Immersive identity systems — not just a logo.",
+  },
+  {
+    id: "04",
+    coord: "106.071",
+    label: "AI Systems",
+    note: "Intelligence woven through the experience.",
+  },
+  {
+    id: "05",
+    coord: "128.430",
+    label: "Conversion",
+    note: "Attention engineered into momentum.",
+  },
 ] as const;
 
 export type SystemPath = (typeof systemPaths)[number];
