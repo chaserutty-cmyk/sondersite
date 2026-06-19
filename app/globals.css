@@ -1,26 +1,977 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------------------
+   Sonder Gravity System v2 — design tokens
+   Warm editorial paper, deep ink, muted antique gold, hairline rules,
+   charcoal inversion for the CONNECT chapter.
+   --------------------------------------------------------------------------- */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Paper / ink */
+  --ivory: #f4f0e7;
+  /* A touch brighter than ivory — used for the SYSTEM card so it reads as a
+     fresh sheet sliding over SIGNAL. */
+  --ivory-light: #faf7f0;
+  --paper: #eee8dc;
+  --warm-paper: #e8dfd1;
+  --ink: #111111;
+  --muted-ink: #4b4944;
+  --soft-ink: rgba(17, 17, 17, 0.68);
+
+  /* Gold */
+  --gold: #9a7a3d;
+  --soft-gold: #c1a56b;
+  --deep-gold: #6f5528;
+
+  /* Hairlines */
+  --hairline: rgba(17, 17, 17, 0.16);
+  --hairline-strong: rgba(17, 17, 17, 0.28);
+  --hairline-gold: rgba(154, 122, 61, 0.34);
+  --hairline-on-dark: rgba(241, 233, 220, 0.32);
+  --hairline-on-dark-strong: rgba(241, 233, 220, 0.55);
+
+  /* Dark inversion */
+  --charcoal: #10100e;
+  --charcoal-soft: #171612;
+  --ivory-on-dark: #f1e9dc;
+
+  /* Display font — Optima (system) → Windows fallbacks */
+  --font-display: Optima, "Optima Nova", "Segoe UI", Candara, "Noto Sans", Arial, sans-serif;
+
+  /* Display grotesque for SystemHero (STRATEGY. / GRAVITY.) — Libre Franklin
+     700 wired via next/font as --font-sans-display. Franklin Gothic lineage:
+     curved R leg, G spur, moderate stroke contrast — closest free match to
+     the reference's editorial grotesque. Falls back to Neue Haas / Helvetica. */
+  --font-display-sans: var(--font-sans-display), "Neue Haas Grotesk Display Pro",
+    "Franklin Gothic Medium", "Helvetica Neue", Arial, sans-serif;
+
+  /* SystemHero (02) display scale.
+     STRATEGY. / GRAVITY. (sans) are the dominant rails.
+     SHAPES. (italic serif) is intentionally slightly smaller — it is the
+     expressive counterpoint, not the volumetric anchor.
+     Leading 1.0 keeps the stack breathing architecturally. */
+  --type-system-sans:   clamp(60px, 9.4vw, 156px);
+  --type-system-serif:  clamp(56px, 8.8vw, 148px);
+  --leading-system:     1.0;
+  --tracking-system:    0em;
+
+  /* Typography scale */
+  /* Block 2 — FEW / CREATE / GRAVITY — dominant, heavy, large */
+  --type-display: clamp(64px, 8vw, 132px);
+  --type-display-mobile: clamp(44px, 13vw, 72px);
+  /* Block 1 — MOST BRANDS / CHASE ATTENTION — elegant, wide, subordinate */
+  --type-display-sm: clamp(46px, 5.5vw, 88px);
+  --type-display-sm-mobile: clamp(34px, 10.5vw, 56px);
+
+  --type-h2: clamp(44px, 5.6vw, 84px);
+  --type-h3: clamp(28px, 3.4vw, 48px);
+  --type-body: 16px;
+  --type-small: 13px;
+  --type-meta: 11px;
+
+  /* Block 2 tight stack; Block 1 given slightly more room */
+  --leading-display: 0.88;
+  --leading-display-sm: 0.93;
+  --leading-display-mobile: 0.90;
+  --leading-tight: 1.05;
+  --leading-body: 1.55;
+
+  /* Near-neutral — Optima does not want compression */
+  --tracking-display: -0.015em;
+  --tracking-display-mobile: -0.01em;
+  --tracking-label: 0.24em;
+  --tracking-meta: 0.18em;
+
+  /* Spacing rhythm */
+  --gutter: clamp(24px, 4vw, 72px);
+  --section-pad-y: clamp(96px, 12vw, 200px);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Colors exposed to Tailwind utilities */
+  --color-ivory: var(--ivory);
+  --color-paper: var(--paper);
+  --color-warm-paper: var(--warm-paper);
+  --color-ink: var(--ink);
+  --color-muted-ink: var(--muted-ink);
+  --color-soft-ink: var(--soft-ink);
+  --color-gold: var(--gold);
+  --color-soft-gold: var(--soft-gold);
+  --color-deep-gold: var(--deep-gold);
+  --color-hairline: var(--hairline);
+  --color-hairline-strong: var(--hairline-strong);
+  --color-hairline-gold: var(--hairline-gold);
+  --color-charcoal: var(--charcoal);
+  --color-charcoal-soft: var(--charcoal-soft);
+  --color-ivory-on-dark: var(--ivory-on-dark);
+
+  /* Fonts exposed to Tailwind utilities */
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base */
+html,
+body {
+  background: var(--ivory);
+  color: var(--ink);
+}
+
+/* Hide the native cursor ONLY when the GoldCursor component has activated
+   and added `gold-cursor-active` to <html>. If the gold cursor can't run
+   (reduced motion, touch/coarse pointer, or any mount failure), the native
+   cursor stays visible instead of leaving the user with no cursor at all. */
+html.gold-cursor-active,
+html.gold-cursor-active body,
+html.gold-cursor-active a,
+html.gold-cursor-active button,
+html.gold-cursor-active [role="button"],
+html.gold-cursor-active label,
+html.gold-cursor-active input,
+html.gold-cursor-active textarea,
+html.gold-cursor-active select {
+  cursor: none;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), "Helvetica Neue", Arial, sans-serif;
+  font-size: var(--type-body);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--ivory);
+}
+
+/* Editorial helpers */
+.serif {
+  font-family: var(--font-serif), "Times New Roman", serif;
+  font-feature-settings: "liga", "kern";
+}
+
+.mono {
+  font-family: var(--font-mono), "IBM Plex Mono", "Menlo", monospace;
+}
+
+/* Block 2 generic — kept for other potential uses */
+.display {
+  font-family: var(--font-display);
+  font-size: var(--type-display);
+  line-height: var(--leading-display);
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+/* Block 2 hero-specific — poster-tight, dominant, Cormorant display serif.
+   GRAVITY overrides font-family/weight/spacing inline; this class governs FEW and CREATE. */
+.display-hero-bottom {
+  font-family: var(--font-serif);
+  font-size: clamp(74px, 8.75vw, 144px);
+  line-height: 0.84;
+  letter-spacing: -0.035em;
+  font-weight: 500;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+/* Block 1 — MOST BRANDS / CHASE ATTENTION — elegant, wide, architectural */
+.display-sm {
+  font-family: var(--font-display);
+  font-size: var(--type-display-sm);
+  line-height: var(--leading-display-sm);
+  letter-spacing: 0.01em;
+  font-weight: 500;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+/* Block 1 hero-specific — high-contrast editorial serif, refined and elegant.
+   Sized ~12% below Block 2 so it reads as setup, not payoff. */
+.display-hero-top {
+  font-family: var(--font-serif);
+  font-size: clamp(40px, 4.85vw, 77px);
+  line-height: 0.92;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-feature-settings: "liga", "kern";
+}
+
+@media (max-width: 768px) {
+  .display {
+    font-size: var(--type-display-mobile);
+    line-height: var(--leading-display-mobile);
+    letter-spacing: var(--tracking-display-mobile);
+  }
+  .display-sm {
+    font-size: var(--type-display-sm-mobile);
+    line-height: var(--leading-display-mobile);
+    letter-spacing: var(--tracking-display-mobile);
+  }
+  .display-hero-top {
+    font-size: clamp(30px, 9.2vw, 49px);
+    line-height: 0.94;
+    letter-spacing: -0.02em;
+  }
+  .display-hero-bottom {
+    font-size: clamp(46px, 13.4vw, 74px);
+    line-height: 0.88;
+  }
+
+  .system-annotation {
+    max-width: clamp(200px, 52vw, 240px);
+  }
+
+  .system-annotation__text {
+    font-size: 11px;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+  }
+}
+
+.label-tech {
+  font-family: var(--font-mono), monospace;
+  font-size: var(--type-meta);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--soft-ink);
+}
+
+.meta-tech {
+  font-family: var(--font-mono), monospace;
+  font-size: var(--type-meta);
+  letter-spacing: var(--tracking-meta);
+  color: var(--soft-ink);
+}
+
+/* Hero system annotation — discovered metadata, not marketing copy */
+.system-annotation {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(12px, 1.2vw, 16px);
+  max-width: clamp(220px, 18vw, 280px);
+}
+
+.system-annotation__line {
+  width: 1px;
+  flex-shrink: 0;
+  background: rgba(17, 17, 17, 0.38);
+}
+
+.system-annotation__text {
+  font-family: var(--font-mono), monospace;
+  font-size: clamp(11px, 0.8vw, 12.5px);
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  margin: 0;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Mask-reveal scaffolding (GSAP toggles --reveal) */
+.mask-line {
+  display: block;
+  overflow: hidden;
+}
+
+.mask-line > span {
+  display: inline-block;
+  /* Initial hidden offset is owned by GSAP (yPercent) in MaskText.
+     Do not set transform here — a CSS translateY(110%) fights GSAP and
+     can leave lines permanently clipped after hydration. */
+}
+
+.is-revealed .mask-line > span {
+  transform: translateY(0);
+  transition:
+    transform 900ms cubic-bezier(0.2, 0.6, 0.16, 1) var(--reveal-delay, 0ms);
+}
+
+/* GoldNode pulse — defined once here so the SVG component stays filter-free */
+.sonder-pulse {
+  animation: sonder-pulse 2.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes sonder-pulse {
+  0%, 100% { opacity: 0.7; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* ---------------------------------------------------------------------------
+   SystemHero (02 — SYSTEM) — display type + section utilities
+   --------------------------------------------------------------------------- */
+
+/* STRATEGY. / GRAVITY. — Libre Franklin 500 (Medium).
+   The reference reads as a refined editorial grotesque at medium weight — not
+   Bold. Tracking pulled back to the token value (-0.015em) so letters breathe
+   at display scale without fusing. Leading inherited from --leading-system. */
+.system-display-sans {
+  font-family: var(--font-display-sans);
+  font-size: var(--type-system-sans);
+  line-height: var(--leading-system);
+  letter-spacing: var(--tracking-system);
+  font-weight: 300;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #2E2B27;
+  font-feature-settings: "kern";
+  font-optical-sizing: auto;
+}
+
+/* SHAPES. — italic Cormorant Garamond 500, LARGER than the sans rails.
+   It is the focal serif moment of the composition: physically dominant,
+   visually expressive. Letter-spacing is very light (-0.01em) — Cormorant
+   italic at display size handles its own optical rhythm. Display ligatures
+   (dlig) add elegance to the italic uppercase caps. */
+.system-display-serif-italic {
+  font-family: var(--font-serif), "Times New Roman", serif;
+  font-size: var(--type-system-serif);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  font-style: italic;
+  font-weight: 600;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #201E1A;
+  font-feature-settings: "kern", "liga", "dlig";
+  text-rendering: geometricPrecision;
+}
+
+/* Quiet paper-grain wash for SystemHero. Uses a CSS-only stipple so we don't
+   need to ship a PNG asset. mix-blend-mode: multiply keeps the ivory warm. */
+.system-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(rgba(17, 17, 17, 0.045) 1px, transparent 1px),
+    radial-gradient(rgba(17, 17, 17, 0.035) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px;
+  background-position: 0 0, 1px 2px;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+}
+
+@media (max-width: 1024px) {
+  /* Annotation density rule — leaders only on desktop */
+  .system-section .leader-annotation {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .system-display-sans {
+    font-size: clamp(36px, 10vw, 64px);
+    letter-spacing: 0em;
+  }
+  .system-display-serif-italic {
+    font-size: clamp(32px, 9.2vw, 60px);
+    letter-spacing: -0.01em;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   WorldHero (03 — WORLD) — typographic editorial spread
+   Static foundation only. No motion classes here; Phase 2 will add reveals.
+   --------------------------------------------------------------------------- */
+
+/* Chapter monument — two classes, matching the reference's size ratio.
+   WORLD is the dominant line; 03 — is subordinate at ~60% of its cap height.
+   Warm charcoal (#2E2B27) matches the reference's ink temperature exactly.
+   Both bleed past the left gutter; the stamp wrapper handles the offset. */
+/* Inter has uniform stroke width — no taper — so at display scale it reads
+   as architectural line-work rather than a heavy-contrast grotesque block.
+   Weight 300 (Inter Light) is available via the variable font in --font-sans. */
+/* font-size: 16vw chosen so Inter 300 "WORLD" (≈3.7em wide) starting at the
+   left gutter (~4vw) lands its D at approximately 62% of the viewport width.
+   No scaleX needed — size is set precisely; no transform distortion. */
+.world-stamp {
+  font-family: var(--font-sans), "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(100px, 16vw, 256px);
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  font-weight: 300;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #2E2B27;
+  font-feature-settings: "kern";
+}
+
+/* 03 — index line: same scale and weight as WORLD — one unified stamp. */
+.world-stamp-index {
+  font-family: var(--font-sans), "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(100px, 16vw, 256px);
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  font-weight: 300;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #2E2B27;
+  font-feature-settings: "kern";
+}
+
+/* Statement headline — bold high-contrast Cormorant, declarative.
+   Tight leading; the line break "We engineer / presence." is in the JSX.
+   color: #10100E (charcoal) is the deepest token — ensures the statement
+   reads darker and more authoritative than the italic quote body below it.
+   text-rendering: geometricPrecision sharpens strokes at display scale. */
+.world-statement {
+  font-family: var(--font-serif), "Times New Roman", serif;
+  font-size: clamp(60px, 6.8vw, 108px);
+  line-height: 0.88;
+  letter-spacing: -0.028em;
+  font-weight: 700;
+  color: #10100E;
+  text-transform: none;
+  font-feature-settings: "kern", "liga";
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Italic prelude — editorial bridge between statement and crescendo.
+   Weight 700 (heaviest loaded Cormorant weight) + deepest charcoal so the
+   body holds clear presence next to the gold emphasis words. Cormorant
+   italic 700 still reads as elegant and refined, never chunky. */
+.world-quote {
+  font-family: var(--font-serif), "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(28px, 3.2vw, 52px);
+  line-height: 1.04;
+  letter-spacing: -0.012em;
+  color: #10100E;
+  /* Subtle same-color shadow visually thickens Cormorant's hairline strokes
+     at display scale without changing the typeface character. */
+  text-shadow: 0 0 0.6px rgba(16, 16, 14, 0.55);
+  font-feature-settings: "kern", "liga";
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Small gold accent — italic, gold, body-size. Used for "not". */
+.world-quote__gold {
+  color: var(--gold);
+  font-style: italic;
+}
+
+/* Large gold emphasis — italic, gold, ~1.6× body. Used for "force," and "pull".
+   These are the mid-tier emphasis words: bigger than body, smaller than
+   the authored/experience crescendo. They give the quote its varied rhythm. */
+.world-quote__gold-lg {
+  color: var(--gold);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.6em;
+  letter-spacing: -0.018em;
+}
+
+/* Roman assertion — darker ink, roman (not italic), heavier weight.
+   Used for "but by" — the pivot phrase that turns the argument. */
+.world-quote__assert {
+  color: #10100E;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.05em;
+  letter-spacing: -0.015em;
+  text-shadow: 0 0 0.6px rgba(16, 16, 14, 0.55);
+}
+
+/* Crescendo phrase — typographic properties only.
+   Layout (display, text-align, margin) is owned by the absolutely positioned
+   wrapper in the JSX. font-size is set inline per word. */
+.world-quote__authored {
+  font-family: var(--font-serif), "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  text-rendering: geometricPrecision;
+}
+
+@media (max-width: 768px) {
+  /* Mobile: re-stack. WORLD shrinks but still bleeds.
+     The collision can't survive at narrow widths, so the gold phrase
+     resets to its column. */
+  .world-stamp {
+    font-size: clamp(60px, 18vw, 120px);
+    line-height: 0.86;
+  }
+  .world-stamp-index {
+    font-size: clamp(60px, 18vw, 120px);
+    line-height: 0.86;
+  }
+  .world-statement {
+    font-size: clamp(40px, 12vw, 64px);
+  }
+  .world-quote {
+    font-size: clamp(20px, 5.4vw, 32px);
+    line-height: 1.18;
+  }
+  .world-quote__authored {
+    font-size: clamp(40px, 11vw, 72px) !important;
+    margin-left: 0 !important;
+  }
+  .world-quote__gold-lg {
+    font-size: 1.4em;
+  }
+  .world-quote__assert {
+    font-size: 1em;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Lenis smooth scroll
+   --------------------------------------------------------------------------- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ---------------------------------------------------------------------------
+   Unified paper grain — shared stipple wash for the ivory chapters.
+   Applied as a background-image layer (not a pseudo-element) so it always
+   sits beneath content with no z-index risk. CSS-only — feTurbulence froze
+   Safari, so no SVG filter. The `!important` is needed only to layer over the
+   inline `background: var(--ivory)` while preserving that ivory base colour.
+   --------------------------------------------------------------------------- */
+.paper-grain {
+  background-image:
+    radial-gradient(rgba(17, 17, 17, 0.05) 1px, transparent 1px),
+    radial-gradient(rgba(17, 17, 17, 0.04) 1px, transparent 1px) !important;
+  background-size: 3px 3px, 5px 5px !important;
+  background-position: 0 0, 1px 2px !important;
+  background-repeat: repeat, repeat !important;
+}
+
+/* ---------------------------------------------------------------------------
+   Keyboard focus — the native cursor is hidden site-wide, so visible focus
+   rings are essential. Inputs override their inline outline:none.
+   --------------------------------------------------------------------------- */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+.connect-form input:focus-visible,
+.connect-form select:focus-visible,
+.connect-section a:focus-visible,
+.connect-section button:focus-visible {
+  outline: 2px solid var(--soft-gold) !important;
+  outline-offset: 4px;
+}
+
+/* ---------------------------------------------------------------------------
+   ServicesHero — row hover states
+   --------------------------------------------------------------------------- */
+.svc-num {
+  transition: transform 360ms cubic-bezier(0.2, 0.6, 0.16, 1), color 360ms ease;
+}
+.svc-title {
+  transition: letter-spacing 360ms ease;
+}
+.svc-row:hover .svc-num {
+  transform: translateX(6px);
+  color: var(--gold);
+}
+.svc-row:hover .svc-title {
+  letter-spacing: 0.12em;
+}
+.svc-panel-img {
+  transition: transform 600ms cubic-bezier(0.2, 0.6, 0.16, 1);
+}
+.svc-vrow:hover .svc-panel-img {
+  transform: scale(1.045);
+}
+.svc-arrow {
+  transition: transform 320ms ease, opacity 320ms ease, color 320ms ease;
+}
+.svc-vrow:hover .svc-arrow {
+  transform: translateX(5px);
+  opacity: 1;
+  color: var(--gold);
+}
+
+/* Footer link hover + draw-in underline */
+.footer-link {
+  position: relative;
+}
+.footer-link:hover {
+  opacity: 1;
+}
+.footer-link::after,
+.menu-social::after,
+.menu-contact::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: var(--soft-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 420ms cubic-bezier(0.2, 0.6, 0.16, 1);
+}
+.menu-social,
+.menu-contact {
+  position: relative;
+}
+.footer-link:hover::after,
+.menu-social:hover::after,
+.menu-contact:hover::after {
+  transform: scaleX(1);
+}
+
+/* Hero CTA — persistent rule that warms to gold on hover. */
+.cta-underline {
+  position: relative;
+}
+.cta-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--ink);
+  transition: background 350ms ease;
+}
+.group:hover .cta-underline,
+.group:hover .cta-underline::after {
+  letter-spacing: 0.28em;
+}
+.group:hover .cta-underline::after {
+  background: var(--gold);
+}
+
+/* Menu links — gold + slide on hover. */
+.menu-link__label {
+  transition: color 300ms ease, transform 420ms cubic-bezier(0.2, 0.6, 0.16, 1);
+}
+.menu-link:hover .menu-link__label {
+  color: var(--soft-gold);
+  transform: translateX(14px);
+}
+
+/* "Live" instrument pulse — status dots breathing. */
+@keyframes live-pulse {
+  0%, 100% { opacity: 0.5; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+.live-dot {
+  animation: live-pulse 2.4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Thesis ticker — slow editorial marquee at the footer seam. */
+.ticker {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+.ticker__track {
+  display: flex;
+  width: max-content;
+  flex-wrap: nowrap;
+  animation: ticker-scroll 38s linear infinite;
+  will-change: transform;
+}
+.ticker__item {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: clamp(28px, 4vw, 56px);
+  padding-right: clamp(28px, 4vw, 56px);
+}
+@keyframes ticker-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Intro loader — orbital ring stroke-in (normalized pathLength = 1).
+   --------------------------------------------------------------------------- */
+@keyframes intro-orbit-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.intro-orbit-path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: intro-orbit-draw 1.6s cubic-bezier(0.76, 0, 0.24, 1) 0.2s forwards;
+}
+.intro-orbit-path--2 {
+  animation-delay: 0.45s;
+  animation-duration: 1.5s;
+}
+.intro-orbit-node {
+  animation: sonder-pulse 2.5s ease-in-out infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+/* ---------------------------------------------------------------------------
+   CardPair — card-stack scroll transition. The shadow + viewport-locked
+   height apply ONLY once JS has enabled card mode (.card-pair-active), so the
+   fallback stacked flow (mobile / reduced-motion / no-JS) is unaffected.
+   --------------------------------------------------------------------------- */
+.card-pair-active .card-over {
+  box-shadow: -40px 0 90px rgba(0, 0, 0, 0.22);
+}
+/* ServicesHero is 112svh by design; as a sliding card it must lock to the
+   pinned viewport so its footer isn't clipped. */
+.card-pair-active .card-over .services-section {
+  height: 100svh !important;
+  min-height: 100svh !important;
+}
+
+/* WorldHero — chapter entrance (fade + rise of the whole spread). */
+.world-section.reveal-ready {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1s ease, transform 1s cubic-bezier(0.2, 0.6, 0.16, 1);
+}
+.world-section.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+/* ServicesHero — row stagger reveal. Hidden state applies only once JS adds
+   `reveal-ready` (so no-JS / reduced-motion keeps rows visible); `in-view`
+   animates them in with a per-row delay. Opacity/transform only — no layout. */
+.services-grid.reveal-ready .svc-row,
+.services-grid.reveal-ready .svc-vrow {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.6, 0.16, 1),
+    transform 0.7s cubic-bezier(0.2, 0.6, 0.16, 1);
+}
+.services-grid.in-view .svc-row,
+.services-grid.in-view .svc-vrow {
+  opacity: 1;
+  transform: none;
+}
+.svc-list .svc-row:nth-child(1),
+.svc-visual .svc-vrow:nth-child(1) {
+  transition-delay: 0.04s;
+}
+.svc-list .svc-row:nth-child(2),
+.svc-visual .svc-vrow:nth-child(2) {
+  transition-delay: 0.1s;
+}
+.svc-list .svc-row:nth-child(3),
+.svc-visual .svc-vrow:nth-child(3) {
+  transition-delay: 0.16s;
+}
+.svc-list .svc-row:nth-child(4),
+.svc-visual .svc-vrow:nth-child(4) {
+  transition-delay: 0.22s;
+}
+.svc-list .svc-row:nth-child(5),
+.svc-visual .svc-vrow:nth-child(5) {
+  transition-delay: 0.28s;
+}
+
+/* ---------------------------------------------------------------------------
+   Responsive — ServicesHero (critical). The fixed 4-col grid clips and the
+   rails overlap on narrow screens, so collapse to a stacked editorial flow:
+   manifesto, then the service rows full-width. Image column + rails + corridor
+   drop out on small screens. Inline grid styles require !important.
+   --------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .services-section {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  .services-grid {
+    display: block !important;
+  }
+  .services-rail,
+  .svc-corridor,
+  .svc-visual {
+    display: none !important;
+  }
+  .svc-manifesto {
+    overflow: visible !important;
+    margin-right: 0 !important;
+    margin-bottom: clamp(36px, 8vw, 56px) !important;
+  }
+  .svc-list {
+    border-left: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    display: block !important;
+  }
+  .svc-row {
+    padding: clamp(18px, 5vw, 26px) 0 !important;
+  }
+  .svc-num {
+    font-size: clamp(40px, 14vw, 64px) !important;
+    width: clamp(60px, 18vw, 90px) !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Responsive — ConnectHero (critical). The headline is set with whiteSpace:
+   nowrap and the form is absolutely centred over it — both overflow on mobile.
+   Stack into normal flow: readable headline, then the form beneath.
+   --------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .connect-section {
+    height: auto !important;
+    min-height: 100svh !important;
+  }
+  .connect-body {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center;
+  }
+  .connect-headline {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    font-size: clamp(44px, 13vw, 80px) !important;
+    margin-bottom: clamp(24px, 6vw, 40px) !important;
+  }
+  .connect-headline span {
+    white-space: normal !important;
+  }
+  .connect-scrim {
+    display: none !important;
+  }
+  .connect-ghost {
+    opacity: 0.16 !important;
+  }
+  .connect-form {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 100% !important;
+  }
+  .connect-coord {
+    display: none !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Responsive — persistent chapter rail + footer
+   --------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .chapter-rail {
+    display: none !important;
+  }
+  .footer-signoff {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(24px, 6vw, 36px);
+  }
+  .footer-columns {
+    grid-template-columns: 1fr 1fr !important;
+    gap: clamp(28px, 7vw, 44px) !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Mobile — section-level layout fixes (≤ 767 px)
+   The desktop compositions use absolute positioning with clamp() minimums
+   that exceed mobile viewport widths. These rules hide or reflow elements
+   that would otherwise overflow or collide on narrow screens.
+   --------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+
+  /* ── Signal (01) ── */
+  /* Diagram zone min-width is 400px — hides behind/over text on mobile */
+  .signal-diagram { display: none !important; }
+  /* Text column min-width is 500px — wider than the viewport */
+  .signal-text { max-width: 100% !important; }
+  /* Annotation at lower-right collides with the CTA on mobile */
+  .signal-annotation { display: none !important; }
+  /* Bottom band labels can wrap awkwardly; give them a tiny size bump */
+  #signal .label-tech { letter-spacing: 0.16em; }
+
+  /* ── System (02) ── */
+  /* Section paddingTop is only 16px — not enough to clear the fixed nav */
+  #system { padding-top: clamp(72px, 9vh, 96px) !important; }
+  /* Technical mesh image min-width is 520px — wider than viewport */
+  .system-mesh { display: none !important; }
+  /* Polyhedron min-width is 376px — overlaps headline on mobile */
+  .system-polyhedron { display: none !important; }
+  /* Path labels stack/collide at percentage positions on mobile */
+  .system-pathindex { display: none !important; }
+  /* Headline padding-left values read fine via existing mobile type scale */
+  #system .relative[style*="paddingLeft"] > * { white-space: normal; }
+
+  /* ── World (03) ── */
+  /* Crosshairs with clamp(280–520px) minimums bleed off the right edge */
+  .world-crosshair-mid { display: none !important; }
+  /* Upper-left coordinate mark clears the viewport fine (8vw = ~30px) */
+  /* but hide it to give more breathing room for the statement headline */
+  .world-coord-mark { display: none !important; }
+  /* Right-column quote: complex right-aligned staircase breaks on mobile */
+  .world-quote-col { display: none !important; }
+  /* Haze: no need without the quote column */
+  .world-haze { display: none !important; }
+  /* Crescendo: right: 120px + 64px+ font overflows on a 375px screen */
+  .world-crescendo { display: none !important; }
+
+  /* Reflow world statement to fill the screen instead of centering */
+  .world-statement {
+    left: var(--gutter) !important;
+    transform: none !important;
+    text-align: left !important;
+    max-width: 88% !important;
+    top: clamp(80px, 14vh, 140px) !important;
+  }
+
+  /* WORLD stamp — already shrinks via existing 768px block; fine-tune */
+  .world-stamp { letter-spacing: -0.05em; }
+
+  /* ── Menu overlay ── */
+  .menu-link__label { font-size: clamp(36px, 11vw, 72px) !important; }
+  .menu-foot { flex-direction: column !important; gap: 24px !important; }
+}
+
+/* Reduced motion — disable drift, parallax, pulse, line-draw, reveals */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  .mask-line > span {
+    transform: none !important;
+  }
 }

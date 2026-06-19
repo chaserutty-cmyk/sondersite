@@ -1,0 +1,865 @@
+SONDER DIGITAL CO.
+REFERENCE-ACCURATE CREATIVE EXECUTION PLAN FOR CURSOR
+Project: sonder-gravity-system-v2
+
+PURPOSE OF THIS DOCUMENT
+This is not a loose inspiration brief. This is a precision execution brief.
+
+The goal is to recreate the visual foundation of the uploaded reference pages with very high accuracy while adapting the words, brand story, and system language to Sonder Digital Co.
+
+Do not interpret the references vaguely.
+Do not make a “similar vibe.”
+Do not use the references as moodboard inspiration only.
+
+Use them as the visual blueprint for:
+- composition
+- typography scale
+- spacing
+- linework
+- density
+- metadata placement
+- section rhythm
+- color temperature
+- form styling
+- motion pacing
+- editorial hierarchy
+
+The final site should feel like the reference system was authored specifically for Sonder Digital Co.
+
+CORE POSITIONING
+Sonder Digital Co. is not being displayed as a basic web design business.
+
+Sonder Digital Co. should be displayed as a digital experience architecture studio.
+
+The website should tell this story:
+
+Most brands chase attention.
+They post more.
+They run ads.
+They redesign surface-level visuals.
+They try to be louder.
+
+But attention alone does not create trust.
+Attention alone does not create belief.
+Attention alone does not create movement.
+Attention alone does not create conversion.
+
+Sonder Digital Co. builds gravity.
+
+Gravity is the invisible force around a brand that makes people stop, feel, trust, understand, and move closer.
+
+We do not just build websites.
+We architect digital presence systems that turn perception into momentum.
+
+PRIMARY THESIS
+MOST BRANDS CHASE ATTENTION.
+FEW CREATE GRAVITY.
+
+This thesis should be visible in the entire site experience:
+- through the hero
+- through orbital diagrams
+- through editorial scale
+- through calm pacing
+- through technical metadata
+- through conversion architecture
+- through the contact intake experience
+
+REFERENCE ACCURACY REQUIREMENT
+The user wants the reference images recreated with high accuracy.
+
+This means:
+1. Match the composition logic as closely as possible.
+2. Match the scale relationships as closely as possible.
+3. Match the typography feeling as closely as possible.
+4. Match the color temperature as closely as possible.
+5. Match the orbital linework as closely as possible.
+6. Match the metadata/detail density as closely as possible.
+7. Match the contact form language and layout style as closely as possible.
+8. Match the editorial whitespace and asymmetry as closely as possible.
+9. Match the section rhythm as closely as possible.
+10. Replace only the content, brand name, and specific visual identifiers needed to make it original to Sonder.
+
+Do not make a generic redesigned version.
+Do not simplify the references into normal landing-page sections.
+Do not “improve” the layout into something safer.
+Do not center everything.
+Do not create rounded cards.
+Do not add random icons.
+Do not add a stock-agency section structure.
+
+IMPORTANT LEGAL / ORIGINALITY NOTE
+If these references are owned by the user or created by the user, recreate them as accurately as possible.
+If any reference is third-party work, keep the layout principles, spacing, typography hierarchy, and motion language accurate, but rebuild the actual implementation with original HTML/CSS/SVG and original Sonder copy, diagrams, and assets.
+
+The goal is visual precision, not asset theft.
+
+VISUAL WORLD
+The site should feel like:
+- a luxury editorial spread
+- an architectural diagram
+- a technical notation system
+- a cinematic brand manifesto
+- a premium studio archive
+- a map of invisible digital forces
+- an authored digital experience
+
+It should not feel like:
+- a dark sci-fi template
+- a planet website
+- a SaaS landing page
+- a dashboard
+- a portfolio template
+- a web design agency template
+- an AI-generated design
+- a cluttered motion experiment
+
+COLOR SYSTEM
+Use warm, paper-like editorial backgrounds.
+
+Suggested tokens:
+--ivory: #F4F0E7;
+--paper: #EEE8DC;
+--warm-paper: #E8DFD1;
+--ink: #111111;
+--muted-ink: #4B4944;
+--soft-ink: rgba(17, 17, 17, 0.68);
+--gold: #9A7A3D;
+--soft-gold: #C1A56B;
+--deep-gold: #6F5528;
+--hairline: rgba(17, 17, 17, 0.16);
+--hairline-strong: rgba(17, 17, 17, 0.28);
+--hairline-gold: rgba(154, 122, 61, 0.34);
+--charcoal: #10100E;
+--charcoal-soft: #171612;
+--ivory-on-dark: #F1E9DC;
+
+Gold usage:
+Gold should be restrained and intentional.
+Use gold only for:
+- nodes
+- small labels
+- active markers
+- selected words
+- small metadata
+- section accents
+- line intersections
+- cursor glow in the final contact section
+
+Do not use gold as a large background fill.
+Do not use thick gold borders.
+Do not make the gold feel flashy.
+
+TYPOGRAPHY SYSTEM
+Typography is the hero.
+
+The references rely on massive type, strong contrast, and editorial hierarchy.
+
+Use:
+- Huge serif headlines
+- Tight uppercase technical labels
+- Small mono metadata
+- Elegant italic serif accents
+- Calm readable body copy
+
+Recommended type direction:
+1. Primary headline font: a high-contrast editorial serif.
+2. Secondary accent font: italic serif.
+3. Metadata font: compact mono or narrow uppercase sans.
+4. Body font: clean sans or readable serif/sans pairing.
+
+If premium fonts are not available, use CSS variables so fonts can be swapped later.
+
+Suggested CSS:
+--font-serif: "Cormorant Garamond", "Times New Roman", serif;
+--font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+--font-mono: "IBM Plex Mono", "Space Mono", monospace;
+
+Headline rules:
+- Use massive scale.
+- Use tight line-height.
+- Use intentional line breaks.
+- Do not make headlines polite.
+- Do not let headlines feel like normal web headers.
+- Headlines should feel like posters/editorial covers.
+
+Hero headline:
+MOST BRANDS
+CHASE ATTENTION.
+FEW
+CREATE
+GRAVITY.
+
+The line breaks matter.
+The words should feel stacked, sculptural, and spatial.
+
+Suggested desktop headline:
+font-size: clamp(76px, 9vw, 162px);
+line-height: 0.82;
+letter-spacing: -0.06em;
+font-weight: 500;
+
+Suggested mobile headline:
+font-size: clamp(54px, 16vw, 88px);
+line-height: 0.86;
+letter-spacing: -0.055em;
+
+Use an italic serif or gold treatment for “GRAVITY” only if it improves the reference match.
+Do not over-style every line.
+
+LAYOUT PRINCIPLES
+The site should not feel built from template sections.
+
+Use editorial composition:
+- large empty space
+- asymmetric grid
+- anchored metadata
+- bottom progress lines
+- oversized typography
+- delicate diagrams
+- offset supporting copy
+- sparse but precise detail
+
+Desktop grid:
+- Use a 12-column grid.
+- Outer margins should feel generous.
+- Hero type should dominate 6 to 8 columns.
+- Orbital diagram should occupy the right field.
+- Supporting copy should sit low, offset, or attached to a thin rule.
+
+Do not:
+- center the hero text
+- put everything in equal cards
+- place diagram in a basic image box
+- add generic hero buttons
+- add excessive body copy
+
+SPACING PRINCIPLES
+Spacing is a luxury signal.
+
+Use:
+- large vertical section padding
+- wide horizontal margins
+- generous negative space
+- sparse metadata
+- slow pacing from section to section
+
+Every section should have one dominant idea.
+
+If a section feels busy, remove elements.
+If a section feels generic, increase scale, asymmetry, or linework specificity.
+If a section feels like a template, remove cards and rebuild with editorial rows, rules, or diagrams.
+
+ORBITAL DIAGRAM SYSTEM
+The orbital SVG system is the signature visual language.
+
+It must not look like a planet.
+It must not look like sci-fi.
+It must not look like an AI-generated glowing orb.
+
+It should look like:
+- a technical drawing
+- a gravitational map
+- a trust system diagram
+- a precise editorial SVG object
+- a visual metaphor for attention and pull
+
+Elements:
+- thin ellipses
+- dashed orbit paths
+- faint construction lines
+- crosshair marks
+- small gold nodes
+- small black nodes
+- coordinate labels
+- technical labels
+- central geometric object
+- subtle diagram imperfections through offsets
+- restrained line opacity
+
+Line rules:
+- strokes should be very thin
+- use black at low opacity
+- use gold sparingly
+- avoid neon
+- avoid glow except very subtle node pulse
+- avoid heavy fills
+
+Suggested SVG details:
+- 3 to 5 elliptical rings
+- 1 dashed ellipse
+- 5 to 7 small nodes
+- 2 to 4 coordinate labels
+- small labels: GRAVITY CORE, MOTION POINT, POSITIONING, TRUST FIELD, SIGNAL PATH
+- central object made of SVG lines/polygons, not a sphere
+- faint x/y axis line
+- tiny tick marks and small technical numerals
+
+MOTION LANGUAGE
+The site should use animation to feel award-winning, but not gimmicky.
+
+Motion should feel like luxury film pacing:
+- slow
+- deliberate
+- quiet
+- controlled
+- precise
+
+Use:
+- mask reveals on headlines
+- slow fade/rise on copy
+- SVG line draw effects
+- staggered metadata reveals
+- soft gold node pulse
+- subtle cursor drift on orbital systems
+- gentle parallax on diagrams
+- vertical panel reveals
+- slight hover movement on case-study rows
+- contact field active-state line animation
+
+Do not use:
+- spinning planets
+- bouncing
+- fast transitions
+- random hover effects
+- over-animated elements
+- loading gimmicks
+- heavy particle systems
+
+Respect prefers-reduced-motion:
+If reduced motion is enabled, remove cursor drift, line draw, parallax, and pulse animations. Preserve layout and readability.
+
+CHAPTER STRUCTURE
+The site tells a story through chapters:
+
+01 Signal
+02 Pull
+03 Shape
+04 Motion
+05 Proof
+06 Connect
+
+Each chapter needs:
+- chapter label
+- one major headline
+- one visual system
+- limited copy
+- metadata
+- restrained motion
+- strong whitespace
+
+Do not make this a generic homepage sequence:
+Hero, services, about, testimonials, contact.
+
+It must feel like a narrative system.
+
+SECTION 01: SIGNAL / HERO
+Purpose:
+Introduce the thesis and immediately establish that Sonder is not a normal web design studio.
+
+Content:
+Label:
+01 — SIGNAL
+
+Headline:
+MOST BRANDS
+CHASE ATTENTION.
+FEW
+CREATE
+GRAVITY.
+
+Supporting copy:
+We engineer digital presence systems that build trust, create pull, and turn perception into momentum.
+
+CTA:
+EXPLORE THE SYSTEM
+
+Visual:
+Large orbital SVG system on the right.
+
+Hero layout:
+- full viewport or near full viewport
+- warm ivory background
+- minimal editorial nav at top
+- massive headline left
+- orbital diagram right
+- support copy beneath or lower-left with a thin rule
+- small CTA as text/rule interaction, not a big button
+- bottom progress line from 01 to 06
+- technical metadata around diagram
+
+Navigation:
+Left: SONDER DIGITAL CO.
+Center: WORK / ABOUT / SYSTEM / INSIGHTS / CONTACT
+Right: MENU + small circular plus mark
+
+Hero visual accuracy:
+Match the reference rhythm closely:
+- type large enough to feel dominant
+- diagram large enough to balance the type
+- metadata small but intentional
+- gold nodes placed at orbital intersections
+- whitespace around the system
+- no clutter
+
+Hero animation:
+- nav fades in
+- label reveals
+- headline mask reveals line by line
+- orbital lines draw in slowly
+- nodes appear after line draw
+- nodes pulse softly
+- support copy rises in
+- bottom progress line draws left to right
+- orbital diagram drifts slightly with cursor
+
+SECTION 02: PULL
+Purpose:
+Explain the difference between attention and gravity.
+
+Label:
+02 — PULL
+
+Headline:
+ATTENTION IS EASY.
+GRAVITY IS DESIGNED.
+
+Body copy:
+Attention can be bought, borrowed, or chased. Gravity is different. It is built through clarity, trust, rhythm, and a digital presence that makes the right people move closer.
+
+Layout:
+- warm ivory background
+- huge whitespace
+- one asymmetric geometry/image area
+- small strategy copy placed like an annotation
+- technical linework and coordinates
+- one or two gold nodes
+
+Visual:
+Use an abstract architectural frame or custom SVG geometry.
+Do not use a generic photo card.
+If using imagery, it should feel architectural, cropped, sparse, and intentional.
+If not using imagery, use geometric linework.
+
+Motion:
+- headline mask reveal
+- diagram fades and line-draws
+- metadata slides gently
+- no aggressive transitions
+
+SECTION 03: SHAPE
+Purpose:
+Show that the work is strategic, not just aesthetic.
+
+Label:
+03 — SHAPE
+
+Headline:
+STRATEGY SHAPES GRAVITY.
+
+Create five editorial strategy rows:
+01 Positioning
+02 Narrative
+03 Interface
+04 Motion
+05 Conversion
+
+Row structure:
+- huge number
+- gold or black serif title
+- one short description
+- thin horizontal rule
+- small abstract SVG strip or marker
+- subtle arrow on far right
+- metadata coordinates
+
+Descriptions:
+Positioning:
+Clarity that makes the brand impossible to confuse.
+
+Narrative:
+The story architecture behind trust and desire.
+
+Interface:
+Digital spaces designed to feel intentional and effortless.
+
+Motion:
+Cinematic rhythm that makes the experience memorable.
+
+Conversion:
+Paths, forms, and flows that turn attention into action.
+
+Important:
+Do not use cards.
+Do not use service icons.
+Do not use rounded boxes.
+Do not make it look like a normal services section.
+
+This should feel like an editorial index, similar in rhythm to the reference service page.
+
+Motion:
+- rows reveal one at a time
+- numbers slide slightly
+- rules draw across
+- arrows move subtly on hover
+- gold nodes pulse lightly
+
+SECTION 04: MOTION
+Purpose:
+Show that digital experience is alive and cinematic.
+
+Label:
+04 — MOTION
+
+Headline:
+MOTION TURNS INTERFACE INTO EXPERIENCE.
+
+Body copy:
+Movement gives the system rhythm. It guides attention, creates anticipation, and makes the brand feel alive without overwhelming the story.
+
+Visual:
+Use cinematic vertical panels.
+
+Panels:
+01 Reveal
+02 Drift
+03 Lock
+04 Pull
+
+Panel rules:
+- tall vertical panels
+- minimal captions
+- abstract editorial imagery or SVG linework
+- no busy cards
+- slow reveal on scroll
+- subtle parallax
+- strong negative space
+
+This section should feel like frames from a brand film.
+
+SECTION 05: PROOF
+Purpose:
+Display portfolio/worlds without generic portfolio cards.
+
+Label:
+05 — PROOF
+
+Headline:
+WORLDS WE’VE CREATED.
+
+Create three case-study rows:
+
+AETHER — Luxury Hospitality
+Metric: +42% inquiry lift
+Sentence: A refined digital presence system built to turn atmosphere into booked experiences.
+
+VERO — Private Aviation
+Metric: 3.1x qualified lead quality
+Sentence: A trust-first interface designed for high-intent clients and private decision cycles.
+
+NOMAD — Lifestyle Brand
+Metric: +68% campaign engagement
+Sentence: A cinematic launch world built to create desire, movement, and cultural pull.
+
+Important:
+These are placeholder examples.
+Design them as editorial rows, not cards.
+
+Each row should include:
+- project name large
+- industry metadata
+- one metric
+- one sentence
+- thin rule
+- optional tiny coordinate/meta label
+- subtle hover shift
+
+Future real case studies can replace these:
+- Women of Colour Hockey Collective
+- Bahamas Premier Girls Fastpitch
+- Profe Carlos Football Training
+- African Hockey Foundation
+
+SECTION 06: CONNECT
+Purpose:
+Create the final conversion moment as a cinematic technical intake.
+
+Label:
+06 — CONNECT
+
+Headline:
+LET’S CREATE
+SOMETHING
+THAT PULLS.
+
+Dark technical contact form:
+[ ENTRY_01: FULL NAME ]
+[ ENTRY_02: COMPANY ]
+[ ENTRY_03: EMAIL ]
+[ ENTRY_04: PROJECT TYPE ]
+[ ENTRY_05: VISION ]
+
+Design:
+- charcoal background
+- ivory text
+- muted gold metadata
+- faint orbital wireframe behind form
+- field labels as technical entry lines
+- no white boxes
+- no rounded generic form cards
+- no normal contact form styling
+- one glowing gold node/cursor detail
+- large editorial headline on one side
+- form on the other side or offset depending on reference
+
+Form interaction:
+- line brightens on focus
+- gold node appears beside active field
+- label shifts subtly
+- submit button feels like a technical command, e.g. INITIATE GRAVITY BUILD
+
+COMPONENT PLAN
+Create:
+
+EditorialNav
+- minimal masthead nav
+- sticky or absolute top
+- no heavy background
+- small uppercase links
+- right-side menu mark
+
+SectionLabel
+- format: 01 — SIGNAL
+- small uppercase mono
+- muted gold or ink
+- placed consistently but not mechanically
+
+TechnicalMeta
+- small coordinate/label component
+- used around diagrams and sections
+
+GoldNode
+- small circular SVG/div node
+- supports pulse animation
+- can be positioned absolutely
+
+OrbitalDiagram
+- reusable SVG system
+- props for density and labels
+- used in hero and contact background
+- no 3D
+
+ChapterProgress
+- bottom progress line
+- numbers 01 to 06
+- thin rule
+- active node
+
+EditorialRule
+- thin line component
+- supports draw animation
+
+StrategyRow
+- for Shape section
+- number/title/description/diagram/arrow
+
+MotionPanel
+- tall vertical cinematic panel
+- label/caption
+- subtle reveal
+
+CaseStudyRow
+- editorial portfolio row
+- no card style
+
+ContactEntryField
+- technical line input
+- bracketed label
+- active state animation
+
+IMPLEMENTATION ORDER FOR CURSOR
+Do not build everything at once.
+
+Step 1:
+Set up the design system:
+- global CSS
+- color tokens
+- typography tokens
+- spacing
+- line styles
+- motion utilities
+- responsive rules
+
+Step 2:
+Build base components:
+- EditorialNav
+- SectionLabel
+- TechnicalMeta
+- GoldNode
+- EditorialRule
+
+Step 3:
+Build OrbitalDiagram in isolation.
+Make it accurate to the references before placing it in the hero.
+
+Step 4:
+Build Section 01 Signal only.
+Stop after hero.
+
+Step 5:
+Critique hero against references.
+Refine until accurate.
+
+Step 6:
+Build Pull section.
+Stop and review.
+
+Step 7:
+Build Shape section.
+Stop and review.
+
+Step 8:
+Build Motion and Proof.
+Stop and review.
+
+Step 9:
+Build Connect.
+Stop and review.
+
+Step 10:
+Full-page polish:
+- spacing
+- mobile
+- motion
+- linework
+- typography
+- gold restraint
+- clutter audit
+
+CURSOR PROMPT TO START
+Paste this into Cursor:
+
+We are building the new Sonder Digital Co. site, project name sonder-gravity-system-v2.
+
+Important: this is not a loose inspiration build. I want the uploaded reference images recreated with high visual accuracy. Use them as the blueprint for layout rhythm, typography scale, spacing, linework, metadata, section pacing, and form styling. Replace the content with Sonder Digital Co. content and create original SVG/HTML/CSS assets, but match the visual foundation extremely closely.
+
+This is not a planet website.
+This is not a dark sci-fi agency template.
+This is not a generic portfolio.
+This is a premium editorial gravity system website about attention, pull, perception, trust, and authored digital presence.
+
+Primary thesis:
+MOST BRANDS CHASE ATTENTION.
+FEW CREATE GRAVITY.
+
+The site should position Sonder Digital Co. as a digital experience architecture studio, not a basic web design business.
+
+We are using:
+- warm ivory editorial backgrounds
+- massive serif headlines
+- black and muted gold typography
+- thin orbital SVG linework
+- gold nodes
+- coordinates
+- technical metadata
+- extreme whitespace
+- asymmetric layouts
+- calm cinematic pacing
+- real 2D HTML/CSS/SVG systems
+- no generic cards
+- no AI-looking clutter
+- no neon sci-fi
+- no busy dashboards
+- no 3D yet
+
+Build only the design system and Section 01 Signal first.
+Do not build the full site yet.
+
+Before coding, inspect the reference images and describe the visual rules you are extracting:
+1. layout grid
+2. typography hierarchy
+3. spacing rhythm
+4. orbital/linework style
+5. metadata style
+6. color usage
+7. motion opportunities
+8. what not to do
+
+Then create the files for the design system and hero only.
+
+Hero requirements:
+- warm ivory background
+- top editorial nav
+- small label: 01 — SIGNAL
+- massive stacked headline:
+  MOST BRANDS
+  CHASE ATTENTION.
+  FEW
+  CREATE
+  GRAVITY.
+- supporting copy:
+  We engineer digital presence systems that build trust, create pull, and turn perception into momentum.
+- orbital SVG system on the right
+- thin ellipses
+- dashed orbit
+- gold nodes
+- black nodes
+- coordinate labels
+- metadata labels like GRAVITY CORE, MOTION POINT, POSITIONING
+- central geometric gravity object
+- bottom progress line 01 — 06
+- subtle mask reveal on headline
+- line draw on orbital system
+- soft node pulse
+- cursor drift on diagram
+- support copy fade/rise
+- respect prefers-reduced-motion
+
+Stop after Section 01 Signal is complete.
+Do not continue to other sections.
+
+ACCURACY CHECKLIST
+Before considering any section done, review:
+
+1. Does it match the reference composition closely?
+2. Is the typography as large and editorial as the reference?
+3. Is there enough whitespace?
+4. Does the diagram feel delicate, technical, and precise?
+5. Are gold accents restrained?
+6. Is it free of generic cards?
+7. Is it free of sci-fi/planet energy?
+8. Does it feel premium and human-designed?
+9. Does every element have a reason?
+10. Does the motion feel calm and cinematic?
+11. Is the mobile version clean?
+12. Does it sell Sonder as a digital experience architect?
+
+QA LANGUAGE FOR CURSOR AFTER EACH SECTION
+After each section, ask Cursor:
+
+Pause and critique the current section against the uploaded reference images.
+Do not continue building yet.
+
+Score it 1 to 10 on:
+1. reference accuracy
+2. typography scale
+3. layout composition
+4. whitespace
+5. linework quality
+6. metadata quality
+7. restrained gold usage
+8. premium editorial feeling
+9. avoiding generic agency design
+10. motion quality
+
+Then list the exact changes needed to make it more accurate.
+
+FINAL NORTH STAR
+The site should make people feel like Sonder Digital Co. is not selling websites.
+
+Sonder is building digital gravity:
+the architecture of trust, perception, attention, motion, and conversion.
+
+The site itself should prove the offer.
+
+If the page feels like a normal agency site, it failed.
+If the page feels like a luxury editorial artifact and technical gravity system, it is working.
