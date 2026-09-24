@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
-<title>HOTMA policy updates for your ACOP and Administrative Plan — Sonder Digital Co.</title>
-<meta name="description" content="A page-by-page check of your ACOP or Administrative Plan against HUD's HOTMA policy requirements, before the January 1, 2027 compliance date. $500, two business days.">
+<title>HOTMA ACOP and Admin Plan Updates for Small Housing Authorities | Sonder Digital Co.</title>
+<meta name="description" content="$500 HOTMA gap check and board-ready ACOP and Administrative Plan rewrites for small PHAs before the January 1, 2027 deadline. Fixed prices, three-day turnaround, no resident data.">
 <link rel="canonical" href="https://sonderdigitalco.com/housing-policy">
 
 <!--
@@ -14,7 +14,7 @@
   Self-contained by design. No external stylesheet, font, script, image,
   analytics or embed: government networks block outside domains, and a blocked
   request is a broken page. Everything here is inline or served from this
-  domain. The page renders fully with JavaScript disabled — the only <script>
+  domain. The page renders fully with JavaScript disabled; the only script tag
   is a JSON-LD metadata block, which is data, not code.
 
   Typefaces are the system stack rather than the marketing site's web fonts,
@@ -79,19 +79,21 @@
   .masthead .place { margin: 0; font-size: 15px; color: var(--soft-ink); }
 
   /* ---------- headline ---------- */
-  .kicker {
-    margin: clamp(38px, 6vw, 62px) 0 14px;
-    font-family: var(--mono);
-    font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--soft-ink);
-  }
   h1 {
-    margin: 0;
+    margin: clamp(38px, 6vw, 62px) 0 0;
     font-family: var(--serif);
     font-weight: 400;
     font-size: clamp(30px, 5.4vw, 46px);
     line-height: 1.16;
     letter-spacing: -0.012em;
+  }
+  .subhead {
+    margin: clamp(18px, 2.4vw, 24px) 0 0;
+    font-family: var(--serif);
+    font-size: clamp(20px, 2.6vw, 25px);
+    line-height: 1.32;
+    color: var(--soft-ink);
+    max-width: 34em;
   }
   .lede {
     margin: clamp(20px, 3vw, 28px) 0 0;
@@ -99,8 +101,7 @@
     line-height: 1.55;
     max-width: 38em;
   }
-  .lede p { margin: 0 0 0.85em; max-width: none; }
-  .lede p:last-child { margin-bottom: 0; }
+  .lede p { margin: 0; max-width: none; }
 
   /* ---------- actions ---------- */
   .actions { display: flex; flex-wrap: wrap; gap: 14px 18px; align-items: center; margin-top: clamp(26px, 4vw, 36px); }
@@ -116,31 +117,23 @@
 
   /* ---------- sections ---------- */
   section { margin-top: clamp(46px, 7vw, 78px); }
-  .eyebrow {
-    margin: 0 0 12px;
-    font-family: var(--mono);
-    font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--soft-ink);
-  }
-  .eyebrow::after { content: ""; display: block; width: 32px; height: 2px; background: var(--gold); margin-top: 10px; }
   h2 {
     margin: 0 0 18px;
     font-family: var(--serif); font-weight: 400;
     font-size: clamp(23px, 3.4vw, 31px);
     line-height: 1.22; letter-spacing: -0.008em;
   }
-  h3 {
-    margin: 34px 0 10px;
-    font-family: var(--serif); font-weight: 400;
-    font-size: clamp(20px, 2.6vw, 24px);
-    line-height: 1.25;
+  /* the gold rule that used to sit under a mono eyebrow, kept as section rhythm */
+  section > h2::before {
+    content: ""; display: block;
+    width: 32px; height: 2px; background: var(--gold);
+    margin-bottom: 20px;
   }
   p { margin: 0 0 1.05em; max-width: 40em; }
   p:last-child { margin-bottom: 0; }
 
-  /* one-line emphasis, set in the serif */
   .statement {
-    margin: 26px 0;
+    margin: 26px 0 0;
     padding-left: 18px;
     border-left: 2px solid var(--gold);
     font-family: var(--serif);
@@ -153,23 +146,14 @@
 
   /* ---------- bullets ---------- */
   ul.bullets { margin: 0 0 1.05em; padding: 0; list-style: none; max-width: 40em; }
-  ul.bullets li { position: relative; padding: 0 0 8px 24px; }
+  ul.bullets li { position: relative; padding: 0 0 10px 24px; }
   ul.bullets li::before {
     content: ""; position: absolute; left: 0; top: 0.68em;
     width: 8px; height: 2px; background: var(--gold);
   }
+  ul.bullets strong { font-weight: 600; }
 
-  /* ---------- status definitions ---------- */
-  dl.answers { margin: 0 0 1.2em; padding: 0; border-top: 1px solid var(--hairline); }
-  dl.answers > div { padding: 14px 0; border-bottom: 1px solid var(--hairline); }
-  dl.answers dt {
-    font-family: var(--mono); font-size: 14px;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    font-weight: 600; margin-bottom: 4px;
-  }
-  dl.answers dd { margin: 0; max-width: 40em; }
-
-  /* ---------- prices ---------- */
+  /* ---------- pricing ---------- */
   table { width: 100%; border-collapse: collapse; margin: 0 0 1.2em; }
   caption { text-align: left; margin-bottom: 10px; color: var(--soft-ink); font-size: 16px; }
   th, td { text-align: left; vertical-align: baseline; padding: 15px 0; border-bottom: 1px solid var(--hairline); }
@@ -179,19 +163,20 @@
     color: var(--soft-ink); font-weight: 400; padding-bottom: 8px;
   }
   tbody th { font-weight: 400; padding-right: 20px; }
-  td.price { width: 1%; white-space: nowrap; text-align: right; font-family: var(--serif); font-size: 22px; font-weight: 700; }
-  thead th:last-child { text-align: right; }
+  td.price {
+    font-family: var(--serif); font-size: 20px; font-weight: 700;
+    padding-right: 20px; line-height: 1.2;
+  }
+  td.action { width: 1%; white-space: nowrap; text-align: right; font-size: 16px; }
+  thead th.col-action { text-align: right; }
 
   /* ---------- steps ---------- */
   ol.steps { margin: 0 0 1.2em; padding: 0; list-style: none; counter-reset: s; }
-  ol.steps li { counter-increment: s; position: relative; padding: 0 0 22px 44px; max-width: 40em; }
+  ol.steps li { counter-increment: s; position: relative; padding: 0 0 16px 44px; max-width: 40em; }
   ol.steps li::before {
     content: counter(s); position: absolute; left: 0; top: 0;
     font-family: var(--serif); font-size: 21px; font-weight: 700; color: var(--gold);
   }
-  ol.steps strong { display: block; font-weight: 600; margin-bottom: 2px; }
-  ol.steps p { margin: 0 0 0.5em; max-width: none; }
-  ol.steps p:last-child { margin-bottom: 0; }
 
   /* ---------- identity (in the footer) ---------- */
   .identity { margin: 0 0 14px; }
@@ -213,7 +198,11 @@
     thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
     tbody tr { padding: 14px 0; border-bottom: 1px solid var(--hairline); }
     tbody th, tbody td { border-bottom: 0; padding: 0; }
-    td.price { text-align: left; margin-top: 6px; }
+    /* price, then the action stacked beneath it */
+    td.price { margin-top: 6px; }
+    /* width:1% on .action beats the element-level width:auto above, which
+       collapses the cell and stacks the link one letter per line. */
+    td.action { width: auto; text-align: left; margin-top: 8px; white-space: normal; }
   }
 
   /* ---------- print ---------- */
@@ -223,12 +212,12 @@
     .wrap { max-width: none; padding-inline: 0; }
     a { color: #000; text-decoration: underline; }
     .btn { background: #fff !important; color: #000 !important; border: 1px solid #000; font-weight: 700; }
-    a[href^="mailto:"]:not(.btn)::after { content: " (" attr(href) ")"; font-family: inherit; }
-    .btn::after { content: " (" attr(data-email) ")"; font-family: inherit; word-break: break-all; }
+    /* a printed page cannot be clicked, so name the destination */
+    a[data-email]::after { content: " (" attr(data-email) ")"; font-family: inherit; }
     a[href^="/"]::after { content: " (sonderdigitalco.com" attr(href) ")"; }
-    section, tbody tr, ol.steps li, dl.answers > div, .statement { break-inside: avoid; page-break-inside: avoid; }
-    h1, h2, h3 { break-after: avoid; page-break-after: avoid; }
-    .eyebrow::after { background: #000; }
+    section, tbody tr, ol.steps li, .statement, ul.bullets li { break-inside: avoid; page-break-inside: avoid; }
+    h1, h2 { break-after: avoid; page-break-after: avoid; }
+    section > h2::before { background: #000; }
     .statement { border-left: 2px solid #000; }
     ul.bullets li::before { background: #000; }
     ol.steps li::before { color: #000; }
@@ -246,157 +235,122 @@
 
   <main>
 
-    <p class="kicker">HOTMA policy updates for housing authorities without a policy department</p>
-    <h1>Get your ACOP and Administrative Plan ready for the board before January 1.</h1>
+    <h1>HOTMA policy updates for housing authorities without a policy department</h1>
+    <p class="subhead">Get your ACOP and Administrative Plan ready for the board before January 1.</p>
 
     <div class="lede">
-      <p>Send Sonder your current policy documents.</p>
-      <p>Sonder reviews them against the remaining HOTMA requirements, identifies what is missing, outdated, or unclear, and shows you exactly where each issue appears in your document.</p>
-      <p>If you want the changes made, Sonder writes the replacement language directly into your existing ACOP or Administrative Plan, in your numbering and structure, so your team has a draft ready for counsel review and board adoption.</p>
-      <p>No resident data required. No starting from a blank template.</p>
+      <p>Send your current policy. Sonder checks it section by section against the remaining HOTMA requirements and shows you exactly what is present, outdated, missing, or unclear, with the page number for every finding. If you want the changes written, Sonder writes the replacement language into your existing document, in your numbering and structure, ready for your counsel's review and the board's adoption.</p>
+    </div>
+
+    <div class="statement">
+      <p>No resident data. No blank template.</p>
     </div>
 
     <div class="actions">
-      <a class="btn" data-email="chase@sonderdigital-co.com" href="mailto:chase@sonderdigital-co.com?subject=ACOP%20for%20HOTMA%20gap%20check&amp;body=Housing%20authority%3A%0D%0A%0D%0ADocument%20%28ACOP%20or%20Administrative%20Plan%29%20attached%2C%20or%20a%20link%20to%20it%3A%0D%0A">Send your ACOP</a>
-      <a class="btn-2" href="/housing-policy/sample.pdf" target="_blank" rel="noopener">See a sample gap check (PDF)</a>
+      <a class="btn" href="https://buy.stripe.com/5kQeVc7rA7av3Db0CM0sU0l" target="_blank" rel="noopener">Pay for the gap check: $500</a>
+      <a class="btn-2" href="/housing-policy/sample.pdf">See a sample gap check (PDF)</a>
     </div>
 
     <section aria-labelledby="deadline">
-      <p class="eyebrow">January 1, 2027 is the deadline</p>
-      <h2 id="deadline">Your board needs the policy language before the deadline gets here.</h2>
-      <p>HUD's Notice PIH 2026-15, issued May 14, 2026, sets the compliance date: the full HOTMA income and asset rules apply to every HUD-50058 with an effective date of January 1, 2027 or later. Authorities that start annual reexaminations 120 days early <q>will need to begin using HOTMA policies … beginning in September 2026.</q></p>
-
-      <p>Two groups sit outside that date. The notice excludes Moving to Work agencies and authorities that currently use HUD's Family Reporting Software exclusively. If your authority is one of them, the January 1 compliance date does not apply to you.</p>
-      <p>But January 1 is not really the working deadline.</p>
-      <p>Your updated policies still have to be reviewed, placed on the agenda, and adopted. If your board meets monthly, you may only have a handful of meetings left.</p>
-      <p>Sonder handles the document work so your staff can focus on getting the policy through your own review and adoption process.</p>
-
-      <h3>Already updated your policies?</h3>
-      <p>Sonder can also check whether your existing HOTMA language reflects the latest requirements and CY2027 figures.</p>
+      <h2 id="deadline">The deadline is January 1. Your board's deadline is earlier.</h2>
+      <p>HUD Notice PIH 2026-15 (May 14, 2026) applies the full HOTMA income and asset rules to every HUD-50058 with an effective date on or after January 1, 2027. Authorities that begin annual reexaminations 120 days early should already be using HOTMA policies for those reexams.</p>
+      <p>January 1 is not the working deadline. The revised policy has to be reviewed, placed on an agenda, and adopted. If your board meets monthly, you have a handful of meetings left.</p>
     </section>
 
     <section aria-labelledby="gapcheck">
-      <p class="eyebrow">The gap check</p>
-      <h2 id="gapcheck">Start with a $500 HOTMA gap check.</h2>
-      <p>You do not have to commit to a rewrite first.</p>
-      <p>Send your current ACOP or Administrative Plan and Sonder will review it against the HOTMA provisions that affect your policies.</p>
-      <p>One document, twenty-seven items, built only from HUD's own material: the March 14, 2024 list of discretionary HOTMA policies, HUD Exchange's Sample Admin and ACOP HOTMA Policies, and Notice PIH 2023-27 Revision 3 (April 16, 2026) with its attachments. Each item cites the HUD page it comes from.</p>
+      <h2 id="gapcheck">The gap check: $500, credited toward the rewrite</h2>
+      <p>Send your current ACOP or Administrative Plan. Within three business days of payment and the document in hand, you receive a page-by-page report covering 27 HOTMA items, built only from HUD's own material: HUD's list of discretionary HOTMA policies (March 14, 2024), HUD Exchange's sample ACOP and Administrative Plan HOTMA policies, and Notice PIH 2023-27 Revision 3 (April 16, 2026) with its attachments. Each item cites the HUD page it comes from.</p>
 
-      <p>You receive a page-by-page report showing (<a href="/housing-policy/sample.pdf" target="_blank" rel="noopener">see a sample gap check</a>):</p>
+      <p>Each item is marked one of five ways:</p>
 
-      <dl class="answers">
-        <div>
-          <dt>Present</dt>
-          <dd>The provision is already addressed at the current figure or requirement.</dd>
-        </div>
-        <div>
-          <dt>Outdated</dt>
-          <dd>Your document addresses it, but still contains an older figure, definition, or rule.</dd>
-        </div>
-        <div>
-          <dt>Missing</dt>
-          <dd>A required policy provision or decision could not be found.</dd>
-        </div>
-        <div>
-          <dt>Unclear</dt>
-          <dd>The subject appears in the document, but the policy does not clearly make the required decision.</dd>
-        </div>
-        <div>
-          <dt>Not addressed</dt>
-          <dd>An optional policy choice is not currently included.</dd>
-        </div>
-      </dl>
-
-      <p>Every finding includes:</p>
       <ul class="bullets">
-        <li>the page in your document</li>
-        <li>the language currently there</li>
-        <li>what needs attention</li>
-        <li>the supporting HUD source</li>
+        <li><strong>Present.</strong> Addressed at the current figure or requirement.</li>
+        <li><strong>Outdated.</strong> Addressed, but with an older figure, definition, or rule.</li>
+        <li><strong>Missing.</strong> A required provision or decision could not be found.</li>
+        <li><strong>Unclear.</strong> The subject appears, but the policy does not clearly make the required decision.</li>
+        <li><strong>Not addressed.</strong> An optional policy choice is not included.</li>
       </ul>
 
-      <p>The figures used are the CY2027 inflation-adjusted values: $109,797 asset limitation, $54,898 asset threshold, $525 dependent deduction, $575 elderly or disabled deduction, 0.38% passbook rate.</p>
+      <p>Every finding shows the page in your document, the language currently there, what needs attention, and the supporting HUD source. Figures are the CY2027 inflation-adjusted values: $109,797 asset limitation, $54,898 asset threshold, $525 dependent deduction, $575 elderly or disabled deduction, 0.38% passbook rate.</p>
 
-      <div class="statement">
-        <p>So you are not getting a generic HOTMA checklist. You are getting a map of exactly what needs attention in your own policy.</p>
+      <p>You receive the report as a PDF and an editable file, ready to hand to the board. If you go ahead with the rewrite, the $500 comes off the price.</p>
+
+      <p>The sample was produced from a real public housing authority's ACOP. The authority is anonymized; the findings, citations, and page references are as delivered. Your document will never be published or used as a sample.</p>
+
+      <div class="actions">
+        <a class="btn" href="https://buy.stripe.com/5kQeVc7rA7av3Db0CM0sU0l" target="_blank" rel="noopener">Pay for the gap check: $500</a>
+        <a class="btn-2" href="/housing-policy/sample.pdf">See a sample gap check (PDF)</a>
       </div>
     </section>
 
     <section aria-labelledby="rewrite">
-      <p class="eyebrow">The rewrite</p>
-      <h2 id="rewrite">Need the changes written too?</h2>
-      <p>Sonder can turn the gap check into a board-ready draft.</p>
-      <p>Instead of handing your staff a list of problems and leaving them to rewrite the document, Sonder can make the changes directly in your existing policy.</p>
-      <p>The goal is not to replace your ACOP with a generic template. The goal is to preserve your existing document, numbering, local policy choices, and structure while updating the sections HOTMA affects.</p>
-      <p>You receive the revised document with the changes made for your team and counsel to review before adoption.</p>
+      <h2 id="rewrite">The rewrite: your document, updated</h2>
+      <p>Sonder writes the replacement language directly into your existing ACOP or Administrative Plan. Your numbering, structure, and local policy choices stay. Only the sections HOTMA affects change.</p>
+      <p>You receive a clean copy ready for adoption and a redline of every change, within ten business days of payment or purchase order and the document in hand.</p>
+    </section>
+
+    <section aria-labelledby="amendment">
+      <h2 id="amendment">Already adopted HOTMA policies?</h2>
+      <p>The 2027 amendment updates them for the April 2026 revision of PIH 2023-27 and the CY2027 figures. $750, same three-day turnaround.</p>
+    </section>
+
+    <section aria-labelledby="exclusions">
+      <h2 id="exclusions">Two groups are outside the January 1 date</h2>
+      <p>PIH 2026-15 excludes Moving to Work agencies and authorities that use HUD's Family Reporting Software exclusively. If your authority is one of them, the notice's January 1 compliance date does not apply to you.</p>
     </section>
 
     <section aria-labelledby="pricing">
-      <p class="eyebrow">Pricing</p>
-      <h2 id="pricing">What it costs</h2>
+      <h2 id="pricing">Pricing</h2>
 
       <table>
         <caption>Fixed prices. No hourly billing.</caption>
         <thead>
-          <tr><th scope="col">Service</th><th scope="col">Price</th></tr>
+          <tr>
+            <th scope="col">Service</th>
+            <th scope="col">Price</th>
+            <th scope="col" class="col-action">Action</th>
+          </tr>
         </thead>
         <tbody>
-          <tr><th scope="row">HOTMA gap check, one document</th><td class="price">$500</td></tr>
-          <tr><th scope="row">Rewrite, one document</th><td class="price">$1,500</td></tr>
-          <tr><th scope="row">Rewrite, ACOP + Administrative Plan</th><td class="price">$2,500</td></tr>
-          <tr><th scope="row">2027 amendment &mdash; you already adopted HOTMA policies and need the April 2026 and CY2027 changes only</th><td class="price">$750</td></tr>
+          <tr>
+            <th scope="row">HOTMA gap check, one document</th>
+            <td class="price">$500, credited toward a rewrite</td>
+            <td class="action"><a href="https://buy.stripe.com/5kQeVc7rA7av3Db0CM0sU0l" target="_blank" rel="noopener">Pay by card</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Rewrite, one document</th>
+            <td class="price">$1,500</td>
+            <td class="action"><a href="https://buy.stripe.com/3cI5kC4fo2Uf2z7adm0sU0k" target="_blank" rel="noopener">Pay by card</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Rewrite, ACOP and Administrative Plan</th>
+            <td class="price">$2,500</td>
+            <td class="action"><a href="mailto:chase@sonderdigital-co.com?subject=HOTMA%20quote" data-email="chase@sonderdigital-co.com">Email for a quote</a></td>
+          </tr>
+          <tr>
+            <th scope="row">2027 amendment, HOTMA policies already adopted</th>
+            <td class="price">$750</td>
+            <td class="action"><a href="mailto:chase@sonderdigital-co.com?subject=HOTMA%20quote" data-email="chase@sonderdigital-co.com">Email for a quote</a></td>
+          </tr>
         </tbody>
       </table>
 
-      <p><a href="/housing-policy/sample.pdf" target="_blank" rel="noopener">See a sample gap check (PDF)</a> for exactly what the $500 buys.</p>
+      <p>Card payments start the day they clear. If your authority requires a purchase order, W-9, or vendor setup, Sonder provides the documentation the same day.</p>
     </section>
 
     <section aria-labelledby="how">
-      <p class="eyebrow">The process</p>
-      <h2 id="how">What happens after you send the document?</h2>
+      <h2 id="how">How it works</h2>
       <ol class="steps">
-        <li>
-          <strong>Send your current policy</strong>
-          <p>Email your ACOP, Administrative Plan, or a link to the public copy on your website.</p>
-          <p>Do not send resident files or personally identifiable resident information. Sonder does not need them.</p>
-        </li>
-        <li>
-          <strong>Sonder reviews it</strong>
-          <p>The document is checked section by section against the relevant HOTMA policy requirements and current figures.</p>
-        </li>
-        <li>
-          <strong>Get your gap check</strong>
-          <p>Within two business days, you receive the findings in <a href="/housing-policy/sample.pdf" target="_blank" rel="noopener">PDF</a> and editable format.</p>
-        </li>
-        <li>
-          <strong>Decide whether you want the rewrite</strong>
-          <p>If you want Sonder to make the changes, say so. No new discovery process. No starting over.</p>
-        </li>
+        <li>Pay for the gap check, or email to request a formal quote for a purchase order.</li>
+        <li>Send your ACOP or Administrative Plan. Word if you have it, PDF works. No resident files.</li>
+        <li>Within three business days, receive your findings in PDF and editable format.</li>
+        <li>Want the changes written? Say so. No new discovery, no starting over.</li>
       </ol>
     </section>
 
-    <section aria-labelledby="sample">
-      <p class="eyebrow">See what the finished work looks like before you buy</p>
-      <h2 id="sample">View a real HOTMA gap check.</h2>
-      <p>The sample below was produced from an actual public housing authority policy document.</p>
-      <p>The authority has been anonymized, but the findings, citations, page references, and document analysis are preserved so you can see exactly what you would receive.</p>
-
-      <p><a class="btn-2" href="/housing-policy/sample.pdf" target="_blank" rel="noopener">See a sample gap check (PDF)</a></p>
-
-      <p class="aside" style="margin-top:22px">Your document will not be published or turned into a public sample.</p>
-    </section>
-
-    <section aria-labelledby="small">
-      <p class="eyebrow">Who this is for</p>
-      <h2 id="small">Built for small housing authorities that do not have a policy department.</h2>
-      <p>If you are running a small authority, HOTMA is one more project sitting beside leasing, inspections, maintenance, vouchers, finance, board preparation, and everything else your staff is already responsible for.</p>
-      <p>You should not have to spend days jumping between HUD notices, sample policies, old policy language, and your current document just to figure out what still needs to change.</p>
-
-      <div class="statement">
-        <p>Send the policy you already have. Sonder does the comparison.</p>
-      </div>
-
-      <p class="aside" style="margin-top:22px">Card payment available. If your authority requires a purchase order, W-9, or vendor setup, Sonder can provide the required vendor documentation.</p>
+    <section aria-labelledby="builtfor">
+      <h2 id="builtfor">Built for authorities that do not have a policy department</h2>
+      <p>HOTMA is one more project sitting beside leasing, inspections, maintenance, finance, and board preparation. You should not have to spend days cross-referencing HUD notices against your own document to find out what still needs to change. Send the policy you already have. Sonder does the comparison.</p>
     </section>
 
   </main>
@@ -405,13 +359,11 @@
 <footer>
   <div class="wrap">
     <p class="identity">
-      <span>Sonder Digital Co.</span>
-      <span>Chase Rutty</span>
+      <span>Sonder Digital Co. &middot; Chase Rutty</span>
       <span>354 Broad Street, Eatontown, NJ 07724</span>
       <span><a href="mailto:chase@sonderdigital-co.com">chase@sonderdigital-co.com</a> &middot; <a href="tel:+19086010864">(908) 601-0864</a></span>
     </p>
-    <p>Prepared policy language is provided as a draft for the housing authority and its counsel to review before adoption. Sonder Digital Co. does not provide legal advice or guarantee regulatory compliance.</p>
-    <p>Sonder Digital Co. is not affiliated with, endorsed by, or acting on behalf of the U.S. Department of Housing and Urban Development.</p>
+    <p>Prepared policy language is provided as a draft for the housing authority and its counsel to review before adoption. Sonder Digital Co. does not provide legal advice or guarantee regulatory compliance. Sonder Digital Co. is not affiliated with, endorsed by, or acting on behalf of the U.S. Department of Housing and Urban Development.</p>
   </div>
 </footer>
 
