@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter, IBM_Plex_Mono, Libre_Franklin } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import GoldCursor from "@/components/GoldCursor";
 import SmoothScroll from "@/components/SmoothScroll";
 import Intro from "@/components/Intro";

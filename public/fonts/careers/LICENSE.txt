@@ -1,0 +1,9 @@
+The font files in this folder are the Latin subsets of three open-source
+typefaces, as served by Google Fonts, self-hosted for the /careers pages.
+
+  Cormorant Garamond   Copyright the Cormorant Project Authors (Christian Thalmann)
+  Inter                Copyright the Inter Project Authors (Rasmus Andersson)
+  IBM Plex Mono        Copyright IBM Corp.
+
+Each is licensed under the SIL Open Font License, Version 1.1:
+https://openfontlicense.org/open-font-license-official-text/

@@ -25,6 +25,14 @@ const nextConfig: NextConfig = {
    * Changing the target: it points at the project's stable production alias, so a
    * deploy there goes live here with no change to this repo.
    */
+  /**
+   * The setter page was built at /careers/appointment-setter and published at
+   * /setterapplication. The old address still works and lands on the new one.
+   */
+  async redirects() {
+    return [{ source: "/careers/appointment-setter", destination: "/setterapplication", permanent: true }];
+  },
+
   async rewrites() {
     const WEDDING_DESK = "https://sonder-concierge-site.vercel.app";
     return [

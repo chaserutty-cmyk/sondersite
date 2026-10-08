@@ -1,8 +1,8 @@
 /**
- * Sonder Gravity System v2 — design tokens (TypeScript mirror of globals.css).
+ * Sonder Gravity System v2 — design tokens (TypeScript mirror of tokens.css).
  *
  * Use these inside R3F materials, GSAP timelines, and any TS context where CSS
- * variables aren't available. Keep these in lockstep with /app/globals.css.
+ * variables aren't available. Keep these in lockstep with /app/tokens.css.
  */
 
 export const palette = {

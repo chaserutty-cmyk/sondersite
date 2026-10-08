@@ -1,0 +1,1395 @@
+/* ===========================================================================
+   Careers — recruiting pages (/careers/*)
+   ---------------------------------------------------------------------------
+   Sonder Gravity System v2, at rest. Every colour, typeface and easing here is
+   a token from ../tokens.css; nothing is redefined. What this file adds is a
+   layout for reading and applying on a phone: one column, the pay and the
+   Apply button first, hairlines instead of boxes, no motion that matters.
+
+   Written mobile-first. The two breakpoints are 640px (pairs sit side by side)
+   and 960px (label and heading move to a left column).
+
+   Gold: --gold is about 3.5:1 on ivory, so it is used for display type, rules
+   and nodes only. Small gold text uses --deep-gold (about 6:1).
+   =========================================================================== */
+
+@import "../tokens.css";
+
+/* ---------------------------------------------------------------- fonts
+   The three house typefaces, self-hosted (see app/(careers)/layout.tsx for
+   why). Latin subset. The two Cormorant files and Inter are variable fonts.
+   The "Fallback" faces are system fonts resized to the same metrics, so the
+   page does not jump when the real font arrives; the numbers are the ones
+   next/font computes for the homepage. */
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/fonts/careers/cormorant-garamond.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: italic;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/fonts/careers/cormorant-garamond-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/careers/inter.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/careers/ibm-plex-mono-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/careers/ibm-plex-mono-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Cormorant Garamond Fallback";
+  src: local("Times New Roman");
+  ascent-override: 95.27%;
+  descent-override: 29.59%;
+  line-gap-override: 0%;
+  size-adjust: 96.98%;
+}
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial");
+  ascent-override: 90.44%;
+  descent-override: 22.52%;
+  line-gap-override: 0%;
+  size-adjust: 107.12%;
+}
+@font-face {
+  font-family: "IBM Plex Mono Fallback";
+  src: local("Arial");
+  ascent-override: 76.16%;
+  descent-override: 20.43%;
+  line-gap-override: 0%;
+  size-adjust: 134.59%;
+}
+
+/* The same three variables next/font sets on the homepage's <html>. */
+:root {
+  --font-serif: "Cormorant Garamond", "Cormorant Garamond Fallback";
+  --font-sans: "Inter", "Inter Fallback";
+  --font-mono: "IBM Plex Mono", "IBM Plex Mono Fallback";
+}
+
+/* ----------------------------------------------------------------- base
+   These pages do not load globals.css or Tailwind, so the few resets they
+   need are here. The paper grain is the homepage's .paper-grain stipple. */
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background: var(--ivory);
+}
+
+body.cr {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--ivory);
+  background-image:
+    radial-gradient(rgba(17, 17, 17, 0.05) 1px, transparent 1px),
+    radial-gradient(rgba(17, 17, 17, 0.04) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px;
+  background-position: 0 0, 1px 2px;
+  color: var(--ink);
+  font-family: var(--font-sans), "Helvetica Neue", Arial, sans-serif;
+  font-size: var(--type-body);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.cr ::selection {
+  background: var(--gold);
+  color: var(--ivory);
+}
+
+.cr :focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cr *,
+  .cr *::before,
+  .cr *::after {
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+  }
+}
+
+.cr {
+  --cr-gutter: clamp(20px, 5vw, 72px);
+  --cr-max: 1180px;
+  --cr-measure: 60ch;
+  --cr-dim-on-dark: rgba(241, 233, 220, 0.74);
+  /* The brand has no red. A fired-clay tone that reads on charcoal (about 9:1). */
+  --cr-error: #f0ab98;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.cr) {
+    scroll-behavior: smooth;
+  }
+}
+
+.cr *,
+.cr *::before,
+.cr *::after {
+  box-sizing: border-box;
+}
+
+.cr-wrap {
+  max-width: var(--cr-max);
+  margin-inline: auto;
+  padding-inline: var(--cr-gutter);
+}
+
+.cr a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+.cr a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* ------------------------------------------------------------- masthead */
+
+.cr-mast {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: 22px 0;
+}
+.cr-mast__logo,
+.cr-mast__meta {
+  margin: 0;
+  font-family: var(--font-mono), Menlo, monospace;
+  font-size: 11px;
+  line-height: 1.35;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.cr a.cr-mast__logo {
+  color: var(--ink);
+  text-decoration: none;
+}
+.cr-mast__meta {
+  color: var(--muted-ink);
+}
+
+/* ----------------------------------------------------------------- hero */
+
+.cr-hero {
+  position: relative;
+  overflow: hidden;
+  /* Pull the hero up under the masthead so the orbit starts at the page's top edge. */
+  margin-top: -64px;
+  padding-block: calc(64px + clamp(22px, 6vw, 80px)) clamp(44px, 7vw, 104px);
+}
+.cr-hero__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: clamp(22px, 5vw, 32px);
+}
+
+.cr-orbit {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  width: 192px;
+  height: 192px;
+  overflow: visible;
+  pointer-events: none;
+}
+.cr-orbit circle {
+  fill: none;
+  stroke: var(--hairline-gold);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.cr-orbit .cr-orbit__node {
+  fill: var(--gold);
+  stroke: none;
+}
+
+.cr-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 clamp(14px, 3vw, 22px);
+  font-family: var(--font-mono), Menlo, monospace;
+  font-size: 11px;
+  line-height: 1.3;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted-ink);
+}
+.cr-label__n {
+  color: var(--deep-gold);
+}
+.cr-label__tick {
+  width: clamp(22px, 6vw, 36px);
+  height: 1px;
+  background: var(--gold);
+}
+
+.cr-h1 {
+  margin: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 500;
+  /* "Appointment Setter" is 6.64em wide in the italic. 12vw keeps it on one
+     line inside the gutters from 320px up. */
+  font-size: clamp(36px, 12vw, 92px);
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.cr-h1 span,
+.cr-h1 em {
+  display: block;
+}
+.cr-h1 em {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+/* Pay, hours, place: a spec sheet, not a slogan. Label left, fact right. */
+.cr-ledger {
+  margin: 0;
+  border-top: 1px solid var(--hairline-strong);
+}
+.cr-ledger__row {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 12px;
+  padding: 9px 0 8px;
+  border-bottom: 1px solid var(--hairline);
+}
+/* The requirement row: the same row, with its label in gold so it reads as a gate. */
+.cr-ledger__row--key dt {
+  color: var(--deep-gold);
+  font-weight: 500;
+}
+.cr-ledger .cr-ledger__row--key dd small {
+  font-weight: 500;
+  color: var(--ink);
+}
+.cr-ledger dt {
+  font-family: var(--font-mono), Menlo, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted-ink);
+}
+.cr-ledger dd {
+  margin: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(23px, 6.2vw, 28px);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.cr-ledger dd small {
+  display: block;
+  margin-top: 3px;
+  font-family: var(--font-sans), Arial, sans-serif;
+  font-weight: 400;
+  font-size: 13.5px;
+  line-height: 1.35;
+  letter-spacing: 0;
+  color: var(--muted-ink);
+}
+
+.cr-hero__action {
+  margin-top: clamp(18px, 4vw, 26px);
+}
+.cr-hero__note {
+  margin: 12px 0 0;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--muted-ink);
+}
+
+.cr-lede {
+  margin: 0;
+  max-width: 46ch;
+  font-size: clamp(17px, 2.1vw, 20px);
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------------- button */
+
+.cr a.cr-btn,
+.cr-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 56px;
+  padding: 0 28px;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: var(--ink);
+  color: var(--ivory);
+  font-family: var(--font-mono), Menlo, monospace;
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 240ms var(--ease-gravity),
+    color 240ms var(--ease-gravity),
+    letter-spacing 360ms var(--ease-gravity);
+}
+.cr-btn__node {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--soft-gold);
+  box-shadow: 0 0 0 3px rgba(193, 165, 107, 0.22);
+}
+@media (hover: hover) {
+  .cr-btn:hover {
+    background: var(--deep-gold);
+    border-color: var(--deep-gold);
+    letter-spacing: 0.19em;
+  }
+}
+.cr-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.cr-btn--light {
+  border-color: var(--ivory-on-dark);
+  background: var(--ivory-on-dark);
+  color: var(--charcoal);
+}
+.cr-btn--light .cr-btn__node {
+  background: var(--gold);
+  box-shadow: 0 0 0 3px rgba(154, 122, 61, 0.2);
+}
+@media (hover: hover) {
+  .cr-btn--light:hover {
+    background: var(--soft-gold);
+    border-color: var(--soft-gold);
+  }
+}
+.cr-btn[disabled] {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.cr-closed {
+  margin: 0;
+  padding: 16px 18px;
+  border: 1px solid var(--hairline-strong);
+  font-family: var(--font-mono), Menlo, monospace;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted-ink);
+}
+
+/* ------------------------------------------------------------- sections */
+
+.cr-section {
+  position: relative;
+  padding-block: clamp(52px, 9vw, 124px);
+  border-top: 1px solid var(--hairline);
+}
+.cr-split {
+  display: grid;
+  gap: clamp(22px, 5vw, 32px);
+}
+
+.cr-h2 {
+  margin: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(32px, 7.6vw, 58px);
+  line-height: 1.02;
+  letter-spacing: -0.018em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.cr-h3 {
+  margin: clamp(32px, 6vw, 48px) 0 0;
+  font-family: var(--font-mono), Menlo, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--deep-gold);
+}
+
+.cr-body {
+  margin: 0;
+  max-width: var(--cr-measure);
+  font-size: 17px;
+  line-height: 1.62;
+  color: var(--ink);
+}
+.cr-body--lead {
+  font-size: clamp(18px, 2.2vw, 21px);
+  line-height: 1.55;
+}
+.cr-body--note {
+  margin-top: clamp(20px, 4vw, 28px);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--muted-ink);
+}
+.cr-section__action {
+  margin-top: clamp(26px, 5vw, 40px);
+}
+
+/* The one hard requirement, set apart so it cannot be read as a preference. */
+.cr-req {
+  margin: 0 0 clamp(24px, 5vw, 34px);
+  padding: 2px 0 4px clamp(18px, 4vw, 26px);
+  border-left: 2px solid var(--gold);
+}
+.cr-req__label {
+  margin: 0 0 10px;
+  font-family: var(--font-mono), Menlo, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--deep-gold);
+}
+.cr-req__text {
+  margin: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(27px, 7vw, 40px);
+  line-height: 1.05;
+  letter-spacing: -0.014em;
+  text-wrap: balance;
+}
+.cr-req__note {
+  margin: 10px 0 0;
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: var(--muted-ink);
+}
+
+/* Numbered hairline rows — "What you will do". */
+.cr-rows {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--hairline-strong);
+}
+.cr-rows li {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  align-items: baseline;
+  padding: 15px 0 14px;
+  border-bottom: 1px solid var(--hairline);
+  font-size: 16.5px;
+  line-height: 1.5;
+}
+.cr-rows__n,
+.cr-gets__n,
+.cr-steps__n {
+  font-family: var(--font-mono), Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--deep-gold);
+}
+
+/* "Why this role" — six short facts, set as display type. */
+.cr-gets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  border-top: 1px solid var(--hairline-strong);
+}
+.cr-gets li {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  align-items: baseline;
+  padding: 16px 0 15px;
+  border-bottom: 1px solid var(--hairline);
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(22px, 5.6vw, 27px);
+  line-height: 1.14;
+  letter-spacing: -0.008em;
+}
+
+/* Compensation — two statements, kept apart. */
+.cr-comp {
+  display: grid;
+  gap: 12px;
+}
+.cr-comp__card {
+  padding: clamp(20px, 5vw, 30px);
+  border: 1px solid var(--hairline-strong);
+  background: var(--ivory-light);
+}
+.cr-comp__label {
+  margin: 0 0 14px;
+  font-family: var(--font-mono), Menlo, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--deep-gold);
+}
+.cr-comp__value {
+  margin: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(30px, 8vw, 40px);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+}
+.cr-comp__note {
+  margin: 12px 0 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--muted-ink);
+}
+/* The two bonus amounts: the number large in gold, what earns it beside and beneath. */
+.cr-bonus {
+  margin: clamp(18px, 4vw, 24px) 0 0;
+  border-top: 1px solid var(--hairline-on-dark);
+}
+.cr-bonus__row {
+  padding: 14px 0 13px;
+  border-bottom: 1px solid var(--hairline-on-dark);
+}
+/* Amount and label sit on one line where there is room; in a narrow card the
+   label drops beneath the amount whole, never mid-phrase. */
+.cr-bonus dt {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 12px;
+  font-family: var(--font-mono), Menlo, monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ivory-on-dark);
+}
+.cr-bonus__per {
+  white-space: nowrap;
+}
+.cr-bonus__amount {
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(38px, 10vw, 48px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  color: var(--soft-gold);
+}
+.cr-bonus dd {
+  margin: 6px 0 0;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--cr-dim-on-dark);
+}
+
+/* The bonus card is inverted: the heavier half of the offer gets the heavier card. */
+.cr-comp__card--bonus {
+  border-color: var(--charcoal);
+  background: var(--charcoal);
+  color: var(--ivory-on-dark);
+}
+.cr-comp__card--bonus .cr-comp__label {
+  color: var(--soft-gold);
+}
+.cr-comp__card--bonus .cr-comp__note {
+  color: var(--cr-dim-on-dark);
+}
+
+/* Process — a spine of gold nodes down the left on a phone, across the top on a desk. */
+.cr-steps {
+  list-style: none;
+  margin: clamp(28px, 6vw, 56px) 0 0;
+  padding: 0;
+  display: grid;
+}
+.cr-steps li {
+  position: relative;
+  padding: 0 0 clamp(26px, 6vw, 34px) 30px;
+  border-left: 1px solid var(--hairline-gold);
+}
+.cr-steps li:last-child {
+  padding-bottom: 0;
+  border-left-color: transparent;
+}
+.cr-steps li::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: -4.5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 4px var(--ivory);
+}
+.cr-steps__n {
+  display: block;
+}
+.cr-steps__title {
+  margin: 8px 0 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(24px, 6vw, 30px);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+.cr-steps__body {
+  margin: 8px 0 0;
+  max-width: 34ch;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--muted-ink);
+}
+
+/* ---------------------------------------------------------- application */
+
+.cr-apply {
+  padding-block: clamp(56px, 9vw, 124px);
+  background: var(--charcoal);
+  color: var(--ivory-on-dark);
+  /* Native pickers, scrollbars and autofill follow the dark field. */
+  color-scheme: dark;
+  scroll-margin-top: 0;
+}
+.cr-apply .cr-label {
+  color: var(--cr-dim-on-dark);
+}
+.cr-apply .cr-label__n {
+  color: var(--soft-gold);
+}
+.cr-apply .cr-label__tick {
+  background: var(--soft-gold);
+}
+.cr-apply .cr-h2 {
+  color: var(--ivory-on-dark);
+}
+.cr-apply__intro {
+  margin: clamp(14px, 3vw, 20px) 0 0;
+  max-width: 34ch;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--cr-dim-on-dark);
+}
+.cr-apply a {
+  text-decoration-color: var(--soft-gold);
+}
+.cr-apply :focus-visible {
+  outline: 2px solid var(--soft-gold);
+  outline-offset: 3px;
+}
+
+.cr-form {
+  display: grid;
+  gap: clamp(24px, 5vw, 30px);
+  min-width: 0;
+}
+.cr-form__trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cr-form__pair {
+  display: grid;
+  gap: clamp(24px, 5vw, 30px) 16px;
+}
+.cr-form__pair-hint {
+  margin-top: -16px;
+}
+
+.cr-field {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.cr-field__label {
+  display: block;
+  margin: 0 0 8px;
+  padding: 0;
+  font-size: 15.5px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ivory-on-dark);
+}
+.cr-field__optional {
+  font-weight: 400;
+  color: var(--cr-dim-on-dark);
+}
+.cr-field__hint {
+  margin: -3px 0 9px;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--cr-dim-on-dark);
+}
+.cr-field__hint.cr-form__pair-hint {
+  margin: -16px 0 0;
+}
+/* A hint that states a requirement, not a tip. */
+.cr-field__hint--key {
+  font-weight: 500;
+  color: var(--soft-gold);
+}
+.cr-field__error {
+  display: flex;
+  gap: 9px;
+  align-items: baseline;
+  margin: 9px 0 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--cr-error);
+}
+.cr-field__error > span {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-family: var(--font-mono), Menlo, monospace;
+  font-size: 10px;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+/* 16px type on every control: anything smaller makes iOS Safari zoom the page on focus. */
+.cr-input {
+  display: block;
+  width: 100%;
+  min-height: 54px;
+  padding: 14px 15px;
+  border: 1px solid var(--hairline-on-dark-strong);
+  border-radius: 0;
+  background: rgba(241, 233, 220, 0.045);
+  color: var(--ivory-on-dark);
+  font-family: var(--font-sans), Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+  -webkit-appearance: none;
+  appearance: none;
+  transition:
+    border-color 200ms ease,
+    background-color 200ms ease;
+}
+.cr-input::placeholder {
+  color: rgba(241, 233, 220, 0.5);
+  opacity: 1;
+}
+.cr-input:hover {
+  border-color: var(--ivory-on-dark);
+}
+.cr-apply .cr-input:focus-visible {
+  outline-offset: 2px;
+  border-color: var(--soft-gold);
+  background: rgba(241, 233, 220, 0.07);
+}
+.cr-input[aria-invalid="true"] {
+  border-color: var(--cr-error);
+}
+.cr-textarea {
+  resize: vertical;
+  min-height: 84px;
+}
+.cr-select {
+  padding-right: 44px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23c1a56b' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  text-overflow: ellipsis;
+}
+.cr-select option {
+  background: var(--charcoal-soft);
+  color: var(--ivory-on-dark);
+}
+/* The file input keeps its native control; only the button inside it is dressed. */
+.cr-file {
+  padding: 9px 10px;
+  font-size: 15px;
+  cursor: pointer;
+  text-overflow: ellipsis;
+}
+.cr-file::file-selector-button {
+  margin: 0 14px 0 0;
+  padding: 9px 16px;
+  border: 1px solid var(--ivory-on-dark);
+  border-radius: 0;
+  background: var(--ivory-on-dark);
+  color: var(--charcoal);
+  font-family: var(--font-mono), Menlo, monospace;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* Radio and checkbox rows: the whole row is the target, 54px tall. */
+.cr-choice__options {
+  display: grid;
+  gap: 8px;
+}
+.cr-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  min-height: 54px;
+  padding: 15px 15px 14px;
+  border: 1px solid var(--hairline-on-dark-strong);
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--ivory-on-dark);
+  cursor: pointer;
+  transition:
+    border-color 200ms ease,
+    background-color 200ms ease;
+}
+.cr-option:hover {
+  border-color: var(--ivory-on-dark);
+}
+.cr-option input {
+  flex: none;
+  display: grid;
+  place-content: center;
+  width: 20px;
+  height: 20px;
+  margin: 1px 0 0;
+  border: 1px solid var(--ivory-on-dark);
+  border-radius: 50%;
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+.cr-option input::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--soft-gold);
+  transform: scale(0);
+  transition: transform 160ms var(--ease-gravity);
+}
+.cr-option input:checked {
+  border-color: var(--soft-gold);
+}
+.cr-option input:checked::before {
+  transform: scale(1);
+}
+.cr-option--check input {
+  border-radius: 0;
+}
+.cr-option--check input::before {
+  width: 11px;
+  height: 6px;
+  border-radius: 0;
+  border-left: 2px solid var(--charcoal);
+  border-bottom: 2px solid var(--charcoal);
+  background: transparent;
+  transform: translateY(-1px) rotate(-45deg) scale(0);
+}
+.cr-option--check input:checked {
+  background: var(--soft-gold);
+}
+.cr-option--check input:checked::before {
+  transform: translateY(-1px) rotate(-45deg) scale(1);
+}
+.cr-option--check input[aria-invalid="true"] {
+  border-color: var(--cr-error);
+}
+.cr-option:has(input:checked) {
+  border-color: var(--soft-gold);
+  background: rgba(193, 165, 107, 0.09);
+}
+/* The ring goes on the row, not the 20px control inside it. */
+.cr-apply .cr-option input:focus-visible {
+  outline: none;
+}
+.cr-option:has(input:focus-visible) {
+  outline: 2px solid var(--soft-gold);
+  outline-offset: 3px;
+}
+.cr-form__checks {
+  display: grid;
+  gap: 8px;
+}
+
+.cr-form__notice {
+  margin: 0;
+  padding: 14px 16px;
+  border-left: 2px solid var(--cr-error);
+  background: rgba(240, 171, 152, 0.08);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ivory-on-dark);
+}
+
+/* The receipt — what replaces the form once the application is stored. */
+.cr-receipt {
+  padding: clamp(28px, 6vw, 44px);
+  border: 1px solid rgba(193, 165, 107, 0.5);
+  background: rgba(193, 165, 107, 0.06);
+}
+.cr-receipt:focus {
+  outline: none;
+}
+.cr-receipt__node {
+  display: block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--soft-gold);
+  box-shadow: 0 0 0 5px rgba(193, 165, 107, 0.2);
+}
+.cr-receipt__title {
+  margin: 22px 0 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(30px, 7vw, 44px);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+}
+.cr-receipt__body {
+  margin: 14px 0 0;
+  max-width: 44ch;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--cr-dim-on-dark);
+}
+/* Shown only when the answers were saved and the résumé file was not. */
+.cr-receipt__body--flag {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-left: 2px solid var(--cr-error);
+  background: rgba(240, 171, 152, 0.08);
+  font-size: 15.5px;
+  color: var(--ivory-on-dark);
+}
+
+/* ------------------------------------------------------------------ faq */
+
+.cr-section--last {
+  border-top: 0;
+}
+.cr-faqs {
+  border-top: 1px solid var(--hairline-strong);
+}
+.cr-faq {
+  border-bottom: 1px solid var(--hairline);
+}
+.cr-faq summary {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px 0 17px;
+  list-style: none;
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(21px, 5.4vw, 25px);
+  line-height: 1.18;
+  letter-spacing: -0.008em;
+  cursor: pointer;
+}
+.cr-faq summary::-webkit-details-marker {
+  display: none;
+}
+.cr-faq summary::after {
+  content: "+";
+  flex: none;
+  font-family: var(--font-mono), Menlo, monospace;
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--deep-gold);
+}
+.cr-faq[open] summary::after {
+  content: "–";
+}
+.cr-faq p {
+  margin: -4px 0 20px;
+  max-width: 54ch;
+  font-size: 16.5px;
+  line-height: 1.55;
+  color: var(--muted-ink);
+}
+
+/* --------------------------------------------------------------- footer */
+
+.cr-foot {
+  padding-block: clamp(40px, 7vw, 72px) clamp(28px, 4vw, 40px);
+  background: var(--charcoal);
+  color: var(--ivory-on-dark);
+  /* Room for the sticky Apply bar, so it never covers the footer's last line. */
+  padding-bottom: calc(clamp(28px, 4vw, 40px) + 72px + env(safe-area-inset-bottom, 0px));
+}
+.cr-foot__grid {
+  display: grid;
+  gap: clamp(26px, 5vw, 40px);
+}
+.cr-foot__sign {
+  margin: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(44px, 9vw, 84px);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+.cr-foot__sign span {
+  color: var(--soft-gold);
+}
+.cr-foot__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+.cr-foot__links a {
+  display: inline-block;
+  padding-block: 4px;
+  font-family: var(--font-mono), Menlo, monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration-color: rgba(193, 165, 107, 0.6);
+  overflow-wrap: anywhere;
+}
+.cr-foot :focus-visible {
+  outline: 2px solid var(--soft-gold);
+  outline-offset: 3px;
+}
+.cr-foot__legal {
+  margin: 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--hairline-on-dark);
+  font-family: var(--font-mono), Menlo, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cr-dim-on-dark);
+}
+
+/* ---------------------------------------------- sticky Apply (every size) */
+
+.cr-sticky {
+  position: fixed;
+  z-index: 40;
+  inset: auto 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  /* Lines its contents up with the page's own column on wide screens. */
+  padding: 10px max(var(--cr-gutter), calc((100vw - var(--cr-max)) / 2 + var(--cr-gutter)))
+    calc(10px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--hairline-strong);
+  background: var(--ivory-light);
+  box-shadow: 0 -10px 30px -18px rgba(17, 17, 17, 0.28);
+  transform: translateY(105%);
+  visibility: hidden;
+  transition:
+    transform 320ms var(--ease-gravity),
+    visibility 0s linear 320ms;
+}
+.cr-sticky.is-shown {
+  transform: none;
+  visibility: visible;
+  transition:
+    transform 320ms var(--ease-gravity),
+    visibility 0s;
+}
+.cr-sticky__summary {
+  margin: 0;
+  min-width: 0;
+  font-size: 13px;
+  line-height: 1.3;
+  color: var(--ink);
+}
+.cr-sticky__summary strong,
+.cr-sticky__summary span {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cr-sticky__summary strong {
+  font-weight: 600;
+}
+.cr-sticky__summary span {
+  font-size: 12px;
+  color: var(--muted-ink);
+}
+.cr a.cr-sticky__btn {
+  flex: none;
+  width: auto;
+  min-height: 46px;
+  padding: 0 22px;
+}
+/* On a phone the bar is tight: the gold node gives its room to the pay line. */
+.cr-sticky__btn .cr-btn__node {
+  display: none;
+}
+
+/* -------------------------------------------------------- notice (legal) */
+
+.cr-notice {
+  padding-block: clamp(36px, 7vw, 88px) clamp(56px, 9vw, 120px);
+}
+.cr-notice__inner {
+  max-width: 44rem;
+}
+.cr-notice h1 {
+  margin: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(36px, 8vw, 60px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.cr-notice h2 {
+  margin: clamp(34px, 6vw, 48px) 0 10px;
+  font-family: var(--font-mono), Menlo, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--deep-gold);
+}
+.cr-notice p,
+.cr-notice li {
+  max-width: var(--cr-measure);
+  font-size: 17px;
+  line-height: 1.62;
+}
+.cr-notice p {
+  margin: 0 0 14px;
+}
+.cr-notice ul {
+  margin: 0 0 14px;
+  padding-left: 1.15em;
+}
+.cr-notice li {
+  margin-bottom: 6px;
+}
+.cr-notice__lede {
+  margin-top: clamp(16px, 3vw, 22px) !important;
+  font-size: clamp(18px, 2.2vw, 20px) !important;
+  color: var(--muted-ink);
+}
+.cr-notice__updated {
+  margin-top: clamp(34px, 6vw, 48px) !important;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+  font-family: var(--font-mono), Menlo, monospace;
+  font-size: 11px !important;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted-ink);
+}
+
+/* ============================================================ from 640px */
+
+@media (min-width: 640px) {
+  .cr a.cr-btn,
+  .cr-btn {
+    width: auto;
+  }
+  .cr-form__submit {
+    justify-self: start;
+  }
+  .cr-form__pair {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .cr-form__pair-hint {
+    grid-column: 1 / -1;
+  }
+  .cr-choice__options--columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .cr-comp {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .cr-gets {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(24px, 4vw, 48px);
+    border-top: 0;
+  }
+  .cr-gets li {
+    border-top: 1px solid var(--hairline-strong);
+    border-bottom: 0;
+    padding: 16px 0 26px;
+  }
+  .cr-orbit {
+    width: 230px;
+    height: 230px;
+  }
+}
+
+/* From tablet up the bar's two lines sit on one, and the button says the whole thing. */
+@media (min-width: 720px) {
+  .cr-sticky {
+    padding-block: 12px calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+  .cr-sticky__summary {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    font-size: 15px;
+  }
+  .cr-sticky__summary span {
+    font-size: 14px;
+  }
+  .cr a.cr-sticky__btn {
+    min-height: 48px;
+    padding: 0 30px;
+  }
+  .cr-sticky__btn .cr-btn__node {
+    display: block;
+  }
+}
+
+/* ============================================================ from 960px */
+
+@media (min-width: 960px) {
+  /* The section label moves beside the logotype, which leaves the top-right
+     corner to the orbit alone. */
+  .cr-mast {
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 22px;
+    padding-top: 28px;
+  }
+  .cr-mast__meta {
+    display: flex;
+    align-items: center;
+    padding-left: 22px;
+    border-left: 1px solid var(--hairline-strong);
+  }
+
+  /* Sized so the italic line fits the left column at every desktop width. */
+  .cr-h1 {
+    font-size: clamp(56px, 7.2vw, 80px);
+  }
+  .cr-h1 em {
+    white-space: nowrap;
+  }
+
+  .cr-hero__grid {
+    grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+    grid-template-areas:
+      "head side"
+      "lede side";
+    /* The ledger column is the taller one; let the pitch row absorb the slack
+       so the pitch stays tucked under the headline. */
+    grid-template-rows: auto 1fr;
+    column-gap: clamp(48px, 7vw, 112px);
+    row-gap: clamp(22px, 2.6vw, 34px);
+    align-items: start;
+  }
+  .cr-hero__head {
+    grid-area: head;
+  }
+  .cr-hero__side {
+    grid-area: side;
+    /* Sit the ledger's top rule on the headline's first baseline. */
+    padding-top: clamp(40px, 3.8vw, 58px);
+  }
+  .cr-lede {
+    grid-area: lede;
+  }
+  /* Outer arc ends just above the ledger's top rule. */
+  .cr-orbit {
+    width: 216px;
+    height: 216px;
+  }
+
+  .cr-split {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    column-gap: clamp(48px, 7vw, 112px);
+    align-items: start;
+  }
+  .cr-split > header {
+    position: sticky;
+    top: 40px;
+  }
+
+  .cr-steps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: clamp(20px, 3vw, 40px);
+  }
+  .cr-steps li,
+  .cr-steps li:last-child {
+    padding: 26px 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--hairline-gold);
+  }
+  .cr-steps li::before {
+    top: -4.5px;
+    left: 0;
+  }
+
+  .cr-foot__grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    column-gap: clamp(48px, 7vw, 112px);
+    align-items: end;
+  }
+  .cr-foot__links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 24px;
+  }
+  .cr-foot__legal {
+    grid-column: 1 / -1;
+  }
+}
