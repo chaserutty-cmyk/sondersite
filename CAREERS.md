@@ -20,9 +20,9 @@ Built from the "Sonder Setter Hiring Plan" v1.0 (Oct 2026). This covers stage 1 
 
 The site never holds a database or storage key. It holds one secret that opens the `hiring` function, and that function can do two things: say whether the opening is open, and take an application with its résumé.
 
-## Before this goes live
+## Still to confirm
 
-These are the hiring plan's open decisions. All three are constants at the top of `lib/careers/copy.ts`.
+The page is live with these as they stand. All three are constants at the top of `lib/careers/copy.ts`.
 
 - **Bonus amounts are set**: $25 per qualified show and $75 per close (`BONUS`). Two parts of the plan are still open and are not stated on the page: **when bonuses are paid**, and the **written definition of a "qualified" appointment**. The page says bonuses are paid "under a written plan", so write that plan before a setter starts.
 - **`CONTACT_EMAIL`** is `chase@sonderdigital-co.com`. Confirm it is the address applicants should write to.
@@ -44,14 +44,18 @@ To redeploy the function after changing it:
 cd ~/sonder/sonder-crm && supabase functions deploy hiring --no-verify-jwt
 ```
 
-### The page is not published yet
+### The page is live (8 Oct 2026)
 
-In the Vercel project for this site, add two environment variables, then deploy:
+Published at `https://www.sonderdigitalco.com/setterapplication`. `sonderdigitalco.com/setterapplication` and the old `/careers/appointment-setter` both redirect there. A push to `main` deploys it.
+
+The Vercel project (`sondersite`) has two production environment variables for it:
 
 - `HIRING_API_URL` = `https://ivarkkgkrcdqoivoqlkh.supabase.co/functions/v1/hiring`
 - `HIRING_API_SECRET` = the value of `HIRING_SECRET` in `~/sonder/sonder-crm/supabase/functions/.env`
 
-Without them the page still renders, but an application gets "We could not save your application" and nothing is stored. Submit one real application from the published page, with a real PDF, and find both the row and the file before sharing the link.
+Without them the page still renders, but an application gets "We could not save your application" and nothing is stored. They are set for Production only, so a preview deployment cannot write to the live table.
+
+A third marked test application went through the published page and was read back from the live table with its résumé. It is there as "TEST APPLICATION 3 (delete me)"; delete it with the other two.
 
 The phone alert for a new application uses the Telegram bot the CRM already has. It carries experience, score and source, never a name or address. If Telegram is not configured, applications are stored just the same.
 
