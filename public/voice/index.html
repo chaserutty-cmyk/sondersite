@@ -127,7 +127,8 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 
 .hero__inner { position: relative; z-index: 2; display: flex; flex-direction: column; flex: 1; max-width: 1240px; width: 100%; margin: 0 auto; }
 .hero__top { display: flex; justify-content: flex-end; padding-top: clamp(46px, 7vh, 74px); }
-.hero__body { flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 80px); align-items: center; padding: clamp(24px, 4vh, 48px) 0 clamp(40px, 6vh, 64px); }
+.hero__body { flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 80px); align-items: start; padding: clamp(24px, 4vh, 48px) 0 clamp(40px, 6vh, 64px); }
+@media (min-width: 901px) { .hero__copy { position: sticky; top: 104px; } }
 .hero__copy { display: flex; flex-direction: column; gap: clamp(18px, 2.4vh, 28px); }
 .hero__eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--gold); }
 .hero__eyebrow-dash { width: 28px; height: 1px; background: var(--gold); opacity: 0.7; }
@@ -155,6 +156,8 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 .embed-slot__live { height: 0; overflow: hidden; }
 .embed-slot.is-ready .embed-slot__live { height: auto; overflow: visible; }
 .embed-slot.is-ready .embed-slot__fallback { display: none; }
+.demo.is-live { background: none; border: 0; box-shadow: none; padding: 0; }
+.demo.is-live .demo__title, .demo.is-live .demo__sub { display: none; }
 .demo__fallback { min-height: 220px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 24px; text-align: center; border: 1px solid var(--hairline); background: var(--paper); }
 .demo__foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding-top: 12px; border-top: 1px solid var(--hairline); }
 .scroll-cue { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 2; display: flex; align-items: center; gap: 10px; color: var(--soft-ink); }
@@ -169,7 +172,7 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 .section-head .h2 { max-width: 14ch; }
 
 /* ----------------------------------------------------------- 01 ROI calc */
-.embed-slot.is-ready .roi-embed { background: var(--ivory-light); border: 1px solid var(--hairline); padding: clamp(14px, 2vw, 28px); }
+.embed-slot.is-ready .roi-embed { background: none; border: 0; padding: 0; }
 .roi__after { display: none; flex-wrap: wrap; gap: 16px 28px; align-items: center; margin-top: clamp(20px, 2.6vw, 32px); padding-top: 20px; border-top: 1px solid var(--hairline); }
 .embed-slot.is-ready + .roi__after { display: flex; }
 .roi { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 3.5vw, 56px); align-items: stretch; }
@@ -339,7 +342,7 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
     <div class="section-head" data-reveal>
       <div class="section-label label-tech"><span class="node" aria-hidden="true"></span><span><span class="idx">01</span><span class="dash">&mdash;</span>The math</span></div>
       <h2 class="h2" id="roi-h">What missed calls <em class="accent">cost you.</em></h2>
-      <p class="lede">Drag the sliders to your numbers.</p>
+      <p class="lede" id="roi-lede">Drag the sliders to your numbers.</p>
     </div>
 
     <div class="embed-slot" id="roi-slot" data-reveal>
@@ -484,6 +487,9 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
     var host = document.querySelector('[data-lumina-embed="' + key + '"]');
     var slot = host && host.closest(".embed-slot");
     if (slot) slot.classList.add("is-ready");
+    var card = host && host.closest(".demo");
+    if (card) card.classList.add("is-live");
+    if (slot && slot.id === "roi-slot") { var lede = document.getElementById("roi-lede"); if (lede) lede.hidden = true; }
   }
   function hookLumina() {
     if (!(window.LuminaEmbed && typeof window.LuminaEmbed.on === "function")) return false;
