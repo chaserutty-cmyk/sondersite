@@ -170,27 +170,8 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 .section-head .h2 { max-width: 14ch; }
 
 /* ----------------------------------------------------------- 01 ROI calc */
-.roi { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 3.5vw, 56px); align-items: stretch; }
-.roi__inputs { display: flex; flex-direction: column; gap: clamp(22px, 2.6vw, 34px); padding: clamp(22px, 3vw, 40px); background: var(--ivory-light); border: 1px solid var(--hairline); }
-.field { display: flex; flex-direction: column; gap: 12px; }
-.field__row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
-.field__label { font-size: 15px; color: var(--ink); }
-.field__value { font-family: var(--font-display); font-size: clamp(24px, 2.4vw, 32px); line-height: 1; font-variant-numeric: tabular-nums; color: var(--ink); }
-.field__value small { font-family: var(--font-meta); font-size: 11px; letter-spacing: 0.14em; color: var(--soft-ink); margin-left: 6px; }
-.field input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; height: 1px; background: var(--hairline-strong); outline: none; margin: 6px 0; }
-.field input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--gold); border: 3px solid var(--ivory-light); box-shadow: 0 0 0 1px var(--gold); cursor: pointer; transition: transform var(--dur-ignite) var(--ease-gravity-settle); }
-.field input[type="range"]::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--gold); border: 3px solid var(--ivory-light); box-shadow: 0 0 0 1px var(--gold); cursor: pointer; }
-.field input[type="range"]:hover::-webkit-slider-thumb { transform: scale(1.2); }
-.field input[type="range"]:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 1px var(--gold), 0 0 0 5px rgba(154, 122, 61, 0.25); }
-.field__hint { display: flex; justify-content: space-between; }
-.roi__out { position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; padding: clamp(22px, 3vw, 40px); background: var(--warm-paper); border: 1px solid var(--hairline); }
-.roi__out .frame-corner { color: var(--gold); }
-.roi__big { font-family: var(--font-display); font-weight: 300; font-size: clamp(56px, 7vw, 112px); line-height: 0.95; letter-spacing: -0.02em; color: var(--ink); font-variant-numeric: tabular-nums; }
-.roi__big small { display: block; font-family: var(--font-meta); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--soft-ink); margin-top: 12px; }
-.roi__year { font-family: var(--font-display); font-style: italic; font-size: clamp(20px, 2.2vw, 30px); color: var(--gold); line-height: 1.1; }
-.roi__ctas { display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: center; padding-top: 20px; border-top: 1px solid var(--hairline); }
-.roi__fine { font-size: 12.5px; color: var(--soft-ink); max-width: 40ch; }
-@media (max-width: 900px) { .roi { grid-template-columns: 1fr; } }
+.roi-embed { background: var(--ivory-light); border: 1px solid var(--hairline); padding: clamp(14px, 2vw, 28px); min-height: 320px; }
+.roi__ctas { display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: center; margin-top: clamp(20px, 2.6vw, 32px); padding-top: 20px; border-top: 1px solid var(--hairline); }
 
 /* ------------------------------------------------------- 02 what it does */
 .rows { border-top: 1px solid var(--hairline-strong); }
@@ -250,10 +231,8 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
   html.js .hero__copy > *:nth-child(5) { animation-delay: 0.32s; }
   html.js .demo { animation: fall var(--dur-settle) var(--ease-gravity) 0.3s both; }
   html.js .live-dot { animation: pulse 2.2s ease-out infinite; }
-  html.js .roi__big.is-bump { animation: bump 0.5s var(--ease-gravity-settle); }
   @keyframes fall { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
   @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(154, 122, 61, 0.5); } 100% { box-shadow: 0 0 0 10px rgba(154, 122, 61, 0); } }
-  @keyframes bump { 0% { transform: translateY(4px); opacity: 0.6; } 100% { transform: none; opacity: 1; } }
 }
 </style>
 </head>
@@ -310,7 +289,11 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
         <!-- ▼ DEMO EMBED SLOT ▼  Paste the demo widget's <div> / <script> inside
              #demo-embed. The dashed placeholder disappears once it has content.
              Widget scripts can also go at the end of <body>. -->
-        <div class="demo__embed" id="demo-embed"></div>
+        <div class="demo__embed" id="demo-embed">
+          <div data-lumina-embed="emb_htaw3vg3c3q0cnqm2cfzsf"
+               data-lumina-mode="inline"
+               data-lumina-theme="light"></div>
+        </div>
         <div class="demo__placeholder" aria-hidden="true">
           <h3 class="h3">Demo loads here.</h3>
           <span class="meta-tech">Embed coming</span>
@@ -333,43 +316,17 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
     <div class="section-head" data-reveal>
       <div class="section-label label-tech"><span class="node" aria-hidden="true"></span><span><span class="idx">01</span><span class="dash">&mdash;</span>The math</span></div>
       <h2 class="h2" id="roi-h">What missed calls <em class="accent">cost you.</em></h2>
-      <p class="lede">Drag the sliders to your numbers.</p>
+      <p class="lede">Put in your numbers.</p>
     </div>
 
-    <div class="roi" data-reveal>
-      <form class="roi__inputs" id="roi-form" onsubmit="return false">
-        <div class="field">
-          <div class="field__row"><label class="field__label" for="missed">Calls you miss per week</label><span class="field__value"><span id="missed-v">10</span></span></div>
-          <input type="range" id="missed" min="1" max="60" step="1" value="10">
-          <div class="field__hint meta-tech"><span>1</span><span>60</span></div>
-        </div>
-        <div class="field">
-          <div class="field__row"><label class="field__label" for="job">Average job value</label><span class="field__value">$<span id="job-v">450</span></span></div>
-          <input type="range" id="job" min="100" max="3000" step="25" value="450">
-          <div class="field__hint meta-tech"><span>$100</span><span>$3,000</span></div>
-        </div>
-        <div class="field">
-          <div class="field__row"><label class="field__label" for="close">Calls that become jobs</label><span class="field__value"><span id="close-v">40</span><small>%</small></span></div>
-          <input type="range" id="close" min="10" max="90" step="5" value="40">
-          <div class="field__hint meta-tech"><span>10%</span><span>90%</span></div>
-        </div>
-      </form>
-
-      <div class="roi__out" aria-live="polite">
-        <svg class="frame-corner" style="top:-1px;left:-1px" viewBox="0 0 22 22" aria-hidden="true"><path d="M1 7 L1 1 L7 1" fill="none" stroke="currentColor" stroke-width="1"/></svg>
-        <svg class="frame-corner" style="top:-1px;right:-1px" viewBox="0 0 22 22" aria-hidden="true"><path d="M21 7 L21 1 L15 1" fill="none" stroke="currentColor" stroke-width="1"/></svg>
-        <svg class="frame-corner" style="bottom:-1px;left:-1px" viewBox="0 0 22 22" aria-hidden="true"><path d="M1 15 L1 21 L7 21" fill="none" stroke="currentColor" stroke-width="1"/></svg>
-        <svg class="frame-corner" style="bottom:-1px;right:-1px" viewBox="0 0 22 22" aria-hidden="true"><path d="M21 15 L21 21 L15 21" fill="none" stroke="currentColor" stroke-width="1"/></svg>
-        <div>
-          <span class="label-tech">You're leaving on the table</span>
-          <p class="roi__big" id="roi-month">$7,800<small>per month</small></p>
-        </div>
-        <p class="roi__year" id="roi-year">About $93,600 a year.</p>
-        <div class="roi__ctas">
-          <a class="cta cta--solid" href="#demo"><span class="cta__label">Try the demo</span><span class="cta__arrow" aria-hidden="true">&rarr;</span></a>
-          <a class="cta" href="#book" data-book><span class="cta__node"></span><span class="cta__label">Book a 15-minute call</span></a>
-        </div>
-      </div>
+    <div class="roi-embed" data-reveal>
+      <div data-lumina-embed="emb_hs5qrsstf54ze94eqmcr2b"
+           data-lumina-mode="inline"
+           data-lumina-theme="light"></div>
+    </div>
+    <div class="roi__ctas" data-reveal>
+      <a class="cta cta--solid" href="#demo"><span class="cta__label">Try the demo</span><span class="cta__arrow" aria-hidden="true">&rarr;</span></a>
+      <a class="cta" href="#book" data-book><span class="cta__node"></span><span class="cta__label">Book a 15-minute call</span></a>
     </div>
   </div>
 </section>
@@ -444,24 +401,6 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
     }
   }
 
-  /* ROI calculator: missed/week × 4.33 weeks × close rate × job value */
-  var missed = document.getElementById("missed"), job = document.getElementById("job"), close = document.getElementById("close");
-  var big = document.getElementById("roi-month"), year = document.getElementById("roi-year");
-  var fmt = function (n) { return "$" + Math.round(n).toLocaleString("en-US"); };
-  var round = function (n, to) { return Math.round(n / to) * to; };
-  function calc() {
-    var m = +missed.value, j = +job.value, c = +close.value / 100;
-    document.getElementById("missed-v").textContent = m;
-    document.getElementById("job-v").textContent = j.toLocaleString("en-US");
-    document.getElementById("close-v").textContent = close.value;
-    var month = m * 4.33 * c * j;
-    big.innerHTML = fmt(round(month, month > 20000 ? 500 : 100)) + "<small>per month</small>";
-    year.textContent = "About " + fmt(round(month * 12, month * 12 > 100000 ? 1000 : 500)) + " a year.";
-    big.classList.remove("is-bump"); void big.offsetWidth; big.classList.add("is-bump");
-  }
-  [missed, job, close].forEach(function (el) { el.addEventListener("input", calc); });
-  calc();
-
   /* Masthead backing once scrolled */
   var masthead = document.getElementById("masthead");
   function onScroll() { masthead.classList.toggle("masthead--stuck", window.scrollY > 24); }
@@ -489,5 +428,6 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
   }
 })();
 </script>
+<script src="https://demo.sonderdigitalco.com/embed.js" async></script>
 </body>
 </html>
