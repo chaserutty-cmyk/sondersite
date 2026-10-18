@@ -8,10 +8,6 @@
     {
       "source": "/voice",
       "destination": "/voice/index.html"
-    },
-    {
-      "source": "/plumbing",
-      "destination": "/voice/index.html"
     }
   ]
 }
