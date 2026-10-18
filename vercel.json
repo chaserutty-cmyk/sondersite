@@ -1,6 +1,17 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
-    { "source": "/housing-policy", "destination": "/housing-policy/index.html" }
+    {
+      "source": "/housing-policy",
+      "destination": "/housing-policy/index.html"
+    },
+    {
+      "source": "/voice",
+      "destination": "/voice/index.html"
+    },
+    {
+      "source": "/plumbing",
+      "destination": "/voice/index.html"
+    }
   ]
 }
