@@ -116,7 +116,7 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 @media (max-width: 620px) { .masthead .cta { display: none; } }
 
 /* ================================================================== HERO */
-.hero { position: relative; min-height: 0; display: flex; flex-direction: column; background: var(--ivory); color: var(--ink); overflow: hidden; overflow: clip; padding: var(--gutter); }
+.hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; background: var(--ivory); color: var(--ink); overflow: hidden; overflow: clip; padding: var(--gutter); }
 /* overflow: clip (not hidden) keeps the glows clipped without creating a scroll
    container, which would stop the sticky hero copy from sticking. */
 .hero__plate {
@@ -137,19 +137,8 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 
 .hero__inner { position: relative; z-index: 2; display: flex; flex-direction: column; flex: 1; max-width: 1240px; width: 100%; margin: 0 auto; }
 .hero__top { display: flex; justify-content: flex-end; padding-top: clamp(46px, 7vh, 74px); }
-.hero__body { padding: clamp(20px, 3vh, 40px) 0 clamp(28px, 4vh, 48px); }
-@media (min-width: 901px) {
-  .hero .hero__copy {
-    display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-    grid-template-areas: "eyebrow ." "head lede" "head ctas" "head terms";
-    column-gap: clamp(40px, 6vw, 110px); row-gap: 22px; align-items: end;
-  }
-  .hero .hero__eyebrow { grid-area: eyebrow; }
-  .hero .hero__headline { grid-area: head; align-self: end; }
-  .hero .hero__copy > .lede { grid-area: lede; max-width: 44ch; }
-  .hero .hero__ctas { grid-area: ctas; margin-top: 0; }
-  .hero .terms { grid-area: terms; margin-top: 0; }
-}
+.hero__body { flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 80px); align-items: start; padding: clamp(24px, 4vh, 48px) 0 clamp(40px, 6vh, 64px); }
+@media (min-width: 901px) { .hero__copy { position: sticky; top: 104px; } }
 .hero__copy { display: flex; flex-direction: column; gap: clamp(18px, 2.4vh, 28px); }
 .hero__eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--gold); }
 .hero__eyebrow-dash { width: 28px; height: 1px; background: var(--gold); opacity: 0.7; }
@@ -179,16 +168,11 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 .embed-slot.is-ready .embed-slot__fallback { display: none; }
 .demo.is-live { background: none; border: 0; box-shadow: none; padding: 0; }
 .demo.is-live .demo__title, .demo.is-live .demo__sub { display: none; }
-.section--demo { padding-top: clamp(8px, 2vw, 24px); scroll-margin-top: 72px; }
-.demo-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px 32px; flex-wrap: wrap; margin-bottom: clamp(20px, 2.6vw, 32px); }
-.demo-head__copy { display: flex; flex-direction: column; gap: 12px; }
-.demo-head__copy .h2 { font-size: clamp(36px, 4vw, 60px); }
-.demo-foot { display: flex; justify-content: space-between; align-items: center; gap: 16px 32px; flex-wrap: wrap; margin-top: clamp(20px, 2.6vw, 32px); padding-top: 20px; border-top: 1px solid var(--hairline); }
 .demo__fallback { min-height: 220px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 24px; text-align: center; border: 1px solid var(--hairline); background: var(--paper); }
 .demo__foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding-top: 12px; border-top: 1px solid var(--hairline); }
 .scroll-cue { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 2; display: flex; align-items: center; gap: 10px; color: var(--soft-ink); }
 .scroll-cue__line { width: 1px; height: 20px; background: var(--gold); opacity: 0.7; }
-
+@media (max-width: 900px) { .hero__body { grid-template-columns: 1fr; align-items: start; } .demo { justify-self: start; max-width: 100%; } }
 @media (max-width: 767px) { .scroll-cue { display: none; } .hero { min-height: auto; padding-bottom: clamp(40px, 8vw, 64px); } .hero__headline { max-width: 100%; } }
 
 /* ================================================================ SECTIONS */
@@ -278,6 +262,7 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
   html.js .hero__copy > *:nth-child(3) { animation-delay: 0.16s; }
   html.js .hero__copy > *:nth-child(4) { animation-delay: 0.24s; }
   html.js .hero__copy > *:nth-child(5) { animation-delay: 0.32s; }
+  html.js .demo { animation: fall var(--dur-settle) var(--ease-gravity) 0.3s both; }
   html.js .live-dot { animation: pulse 2.2s ease-out infinite; }
   @keyframes fall { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
   @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(154, 122, 61, 0.5); } 100% { box-shadow: 0 0 0 10px rgba(154, 122, 61, 0); } }
@@ -331,52 +316,47 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
         </div>
       </div>
 
+      <!-- ═══════════════════════════════════ INTERACTIVE DEMO ═══════════════ -->
+      <aside class="demo" id="demo" aria-label="Interactive demo">
+        <div class="demo__head">
+          <span class="live meta-tech"><span class="live-dot" aria-hidden="true"></span>Interactive demo</span>
+          <span class="meta-tech">Free &middot; No signup</span>
+        </div>
+        <h2 class="demo__title">Talk to it.</h2>
+        <p class="demo__sub">Give it a garage door job and hear it answer, capture the details, and book you.</p>
+
+        <!-- Lumina live demo. The embed stays collapsed until Lumina's script
+             reports a height (LuminaEmbed "resize"); until then the fallback
+             below links straight to the hosted demo page. -->
+        <div class="embed-slot" id="demo-slot">
+          <div class="embed-slot__live" id="demo-embed">
+            <div data-lumina-embed="emb_4m4t8710686j5xngs1wmwx"
+                 data-lumina-mode="inline"
+                 data-lumina-theme="light"></div>
+          </div>
+          <div class="embed-slot__fallback demo__fallback">
+            <a class="cta cta--solid" href="#book" data-demo-link>
+              <span class="cta__label">Open the live demo</span><span class="cta__arrow" aria-hidden="true">&rarr;</span>
+            </a>
+            <span class="meta-tech">About 60 seconds &middot; Uses your mic</span>
+          </div>
+        </div>
+
+        <div class="demo__foot">
+          <span class="meta-tech">Try: &ldquo;My spring just snapped.&rdquo;</span>
+          <a class="cta" href="#book" data-book style="font-size:14px"><span class="cta__node"></span><span class="cta__label">Hear it on your calls</span></a>
+        </div>
+      </aside>
     </div>
   </div>
-</section>
-
-<!-- ─────────────────────────────────────────────────────────── 01 · TRY IT
-     Full width on purpose: Lumina lays the demo and calculator out in two
-     columns when it has room, which roughly halves its height on desktop. -->
-<section id="demo" class="section section--demo" aria-labelledby="demo-h">
-  <div class="shell">
-    <div class="demo-head">
-      <div class="demo-head__copy">
-        <div class="section-label label-tech"><span class="node" aria-hidden="true"></span><span><span class="idx">01</span><span class="dash">&mdash;</span>Try it</span></div>
-        <h2 class="h2" id="demo-h">Talk to it.</h2>
-        <p class="lede">Give it a garage door job and hear it answer, capture the details, and book you.</p>
-      </div>
-      <span class="live meta-tech"><span class="live-dot" aria-hidden="true"></span>Live demo &middot; Free &middot; No signup</span>
-    </div>
-
-    <!-- Lumina live demo + ROI calculator. Collapsed until Lumina's script
-         reports a height; until then the fallback below shows instead. -->
-    <div class="embed-slot" id="demo-slot">
-      <div class="embed-slot__live" id="demo-embed">
-        <div data-lumina-embed="emb_4m4t8710686j5xngs1wmwx"
-             data-lumina-mode="inline"
-             data-lumina-theme="light"></div>
-      </div>
-      <div class="embed-slot__fallback demo__fallback">
-        <a class="cta cta--solid" href="#book" data-demo-link>
-          <span class="cta__label">Open the live demo</span><span class="cta__arrow" aria-hidden="true">&rarr;</span>
-        </a>
-        <span class="meta-tech">About 60 seconds &middot; Uses your mic</span>
-      </div>
-    </div>
-
-    <div class="demo-foot">
-      <p class="lede">Want to hear it answering as <em class="accent">your</em> company?</p>
-      <a class="cta cta--solid" href="#book" data-book><span class="cta__label">Book a 15-minute call</span><span class="cta__arrow" aria-hidden="true">&rarr;</span></a>
-    </div>
-  </div>
+  <span class="scroll-cue meta-tech">Scroll<span class="scroll-cue__line" aria-hidden="true"></span></span>
 </section>
 
 <!-- ─────────────────────────────────────────────────────────── 03 · BOOK -->
 <section id="book" class="book" aria-labelledby="book-h">
   <span class="book__glow" aria-hidden="true"></span>
   <div class="shell book__inner" data-reveal>
-    <div class="section-label label-tech"><span class="node" aria-hidden="true"></span><span><span class="idx">02</span><span class="dash">&mdash;</span>Book</span></div>
+    <div class="section-label label-tech"><span class="node" aria-hidden="true"></span><span><span class="idx">01</span><span class="dash">&mdash;</span>Book</span></div>
     <h2 class="h2" id="book-h">Hear it on <em class="accent">your</em> calls.</h2>
     <p class="lede">15 minutes. We set it up with your services and hours, and you listen to it answer.</p>
     <div class="book__cta">
