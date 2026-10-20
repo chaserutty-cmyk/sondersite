@@ -139,16 +139,16 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 .hero__top { display: flex; justify-content: flex-end; padding-top: clamp(46px, 7vh, 74px); }
 .hero__body { padding: clamp(20px, 3vh, 40px) 0 clamp(28px, 4vh, 48px); }
 @media (min-width: 901px) {
-  .hero__copy {
+  .hero .hero__copy {
     display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
     grid-template-areas: "eyebrow ." "head lede" "head ctas" "head terms";
     column-gap: clamp(40px, 6vw, 110px); row-gap: 22px; align-items: end;
   }
-  .hero__eyebrow { grid-area: eyebrow; }
-  .hero__headline { grid-area: head; align-self: end; }
-  .hero__copy > .lede { grid-area: lede; max-width: 44ch; }
-  .hero__ctas { grid-area: ctas; margin-top: 0; }
-  .terms { grid-area: terms; margin-top: 0; }
+  .hero .hero__eyebrow { grid-area: eyebrow; }
+  .hero .hero__headline { grid-area: head; align-self: end; }
+  .hero .hero__copy > .lede { grid-area: lede; max-width: 44ch; }
+  .hero .hero__ctas { grid-area: ctas; margin-top: 0; }
+  .hero .terms { grid-area: terms; margin-top: 0; }
 }
 .hero__copy { display: flex; flex-direction: column; gap: clamp(18px, 2.4vh, 28px); }
 .hero__eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--gold); }
