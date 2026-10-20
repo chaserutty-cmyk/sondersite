@@ -8,6 +8,10 @@
     {
       "source": "/voice",
       "destination": "/voice/index.html"
+    },
+    {
+      "source": "/garage-doors",
+      "destination": "/garage-doors/index.html"
     }
   ]
 }
