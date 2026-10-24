@@ -1,47 +1,38 @@
-import EditorialNav from "@/components/EditorialNav";
-import ChapterProgress from "@/components/ChapterProgress";
-import ScrollProgress from "@/components/ScrollProgress";
-import SiteFooter from "@/components/SiteFooter";
-import ChapterFlow from "@/components/ChapterFlow";
+import Motion from "@/components/Motion";
+import Chrome from "@/components/Chrome";
+import Hero from "@/sections/Hero";
+import Perspective from "@/sections/Perspective";
+import Expertise from "@/sections/Expertise";
+import Work from "@/sections/Work";
+import Approach from "@/sections/Approach";
+import Talk from "@/sections/Talk";
+import Footer from "@/sections/Footer";
 
 /**
- * Sonder Gravity System v2 — homepage composition.
+ * Sonder Digital Co. — homepage (v2). See DESIGN-PLAN.md.
  *
- *   01 SIGNAL   — sections/SignalHero.tsx
- *   02 SYSTEM   — sections/SystemHero.tsx
- *   03 WORLD    — sections/WorldHero.tsx
- *   05 SERVICES — sections/ServicesHero.tsx
- *   06 CONNECT  — sections/ConnectHero.tsx
- *
- * Persistent chrome: EditorialNav (fixed top, owns the logotype), a vertical
- * ChapterProgress rail (fixed right, inverts over CONNECT), and SiteFooter.
+ *   Hero         white type sheet + dark particle-wave sheet, marquee
+ *   Perspective  dark statement sheet: operations console + approved statement
+ *   Expertise    white sheet: sticky 3D crystal card + four capabilities
+ *   Work         dark sheet: three case cards
+ *   Approach     white sheet: sticky render card + four steps
+ *   Talk         dark CTA sheet over the particle wave
+ *   Footer       on the canvas
  */
 export default function Home() {
   return (
     <>
-      <ScrollProgress />
-      <EditorialNav />
-
-      <main>
-        <ChapterFlow />
+      <Motion />
+      <Chrome />
+      <main id="main">
+        <Hero />
+        <Perspective />
+        <Expertise />
+        <Work />
+        <Approach />
+        <Talk />
       </main>
-
-      <SiteFooter />
-
-      {/* Persistent chapter indicator — vertical right-rail, hidden on small
-          screens where it would crowd the content. */}
-      <div
-        className="chapter-rail"
-        style={{
-          position: "fixed",
-          right: "clamp(16px, 2vw, 32px)",
-          top: "50%",
-          transform: "translateY(-50%)",
-          zIndex: 45,
-        }}
-      >
-        <ChapterProgress orientation="vertical" autoInvertOverDark />
-      </div>
+      <Footer />
     </>
   );
 }

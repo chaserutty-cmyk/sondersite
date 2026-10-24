@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sonder Digital Co. — website
 
-## Getting Started
+The public site at `sonderdigitalco.com`. One anchored homepage plus the careers pages
+(`/setterapplication`, `/careers/privacy`) and three static landers served from `public/`
+(`/housing-policy`, `/voice`, `/garage-doors`). `/weddingdesk` is proxied to the separate
+Sonder Concierge project (see `next.config.ts`).
 
-First, run the development server:
+## Run
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev          # http://localhost:3000
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## The homepage (October 2026 rebuild)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Plan and reference breakdown: `DESIGN-PLAN.md`. Layout follows SynthCoder (rounded sheets,
+split hero, sticky art cards), motion and 3D follow Lonestone, imagery follows Lazarev, all
+in Sonder's ivory, charcoal and gold. Copy is the approved copy only.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| What | Where |
+|---|---|
+| Every word on the page | `lib/copy.ts` |
+| Booking link, contact email, nav anchors | `lib/site.ts` |
+| Styles (tokens shared with the careers pages) | `app/(site)/site.css`, `app/tokens.css` |
+| Page composition | `app/(site)/page.tsx` → `sections/*.tsx` |
+| Buttons, labels, word-rise headings | `components/ui.tsx` |
+| Menu and floating dock | `components/Chrome.tsx` |
+| Smooth scroll, reveals, parallax | `components/Motion.tsx` (Lenis) |
+| Render tiles with glass interface panels (capabilities) | `components/Tile.tsx` |
+| Quote follow-up demonstration | `components/QuoteDemo.tsx` |
+| Background video loops | `components/Loop.tsx`, `public/video/` |
+| Licensed renders, graded to gold (sources in `ASSETS.md`) | `public/art/` |
+| Client site captures (names blurred or cropped out) | `public/work/` |
 
-## Learn More
+**The booking link.** Every "Book a Discovery Call" goes to `BOOKING_URL` in `lib/site.ts`.
 
-To learn more about Next.js, take a look at the following resources:
+**Motion.** Everything respects `prefers-reduced-motion`: smooth scroll turns off, reveals
+show immediately, and the video loops stay on their poster frame. Loops pause when off-screen.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Imagery.** Every render and loop is licensed stock (Unsplash and Pexels), graded to the
+brand. `ASSETS.md` lists each file, its source and what was changed.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## The previous homepage
 
-## Deploy on Vercel
+The chapter-based "Gravity System" homepage (May–October 2026) is kept two ways:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- a full copy of the project as it was, without `node_modules`, at
+  `../sonderv3-backup-2026-10-23/`
+- the git branch `pre-redesign-2026-10-23`, pinned at the last commit before the redesign
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Careers pages
+
+See `CAREERS.md`. They have their own root layout and stylesheet and share only
+`app/tokens.css` with the homepage.

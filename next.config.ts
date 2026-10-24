@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
   // hydration — leaving interactive features (like the custom cursor) dead.
   allowedDevOrigins: ["localhost", "127.0.0.1"],
 
+  // Framed screens on the homepage are served at quality 82; Next 16 requires
+  // every non-default quality to be declared.
+  images: { qualities: [75, 82] },
+
   /**
    * /weddingdesk -> the Sonder Concierge app.
    *
