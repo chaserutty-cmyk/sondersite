@@ -14,10 +14,25 @@
 export const CTA = "Book a Discovery Call";
 
 export const SEO = {
-  title: "Sonder Digital Co. | Custom AI, automation, software and websites",
+  /** ≤ 62 characters; names the services and the city. */
+  title: "Sonder Digital Co. | Custom AI, Automation & Software, Atlanta",
+  /** ≤ 160 characters; names the lanes an owner would search for. */
   description:
-    "Custom AI, automation, software, and websites designed to help you capture more opportunities, save time, and run a more efficient business.",
+    "Custom AI agents, quote follow-up and lead reactivation, workflow automation, custom CRMs and websites for established businesses. Atlanta, Georgia.",
   ogTitle: "We build technology that makes your business work better.",
+  keywords: [
+    "custom AI automation for small business",
+    "AI implementation Atlanta",
+    "quote follow-up automation",
+    "lead reactivation service",
+    "AI receptionist",
+    "voice AI receptionist",
+    "custom CRM development",
+    "workflow automation",
+    "custom software development",
+    "web design Atlanta",
+    "HOTMA ACOP update",
+  ],
 } as const;
 
 export const HERO = {

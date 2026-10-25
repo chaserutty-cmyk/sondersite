@@ -10,7 +10,7 @@ import Loop from "@/components/Loop";
 export default function Talk() {
   return (
     <section id="talk" className="sheet sheet--dark on-dark talk" aria-labelledby="talk-h">
-      <Loop src="/video/talk-loop.mp4" poster="/video/talk-loop.jpg" />
+      <Loop src="/video/talk-loop.mp4" srcSmall="/video/talk-loop-720.mp4" poster="/video/talk-loop.jpg" />
       <div className="talk__inner">
         <Eyebrow n="05" label={TALK.label} />
         <p className="talk__kicker mono" data-reveal>

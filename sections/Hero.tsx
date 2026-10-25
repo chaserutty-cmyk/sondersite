@@ -95,7 +95,7 @@ export default function Hero() {
             <BookPill placement="nav" />
           </div>
           <div className="hero__visual">
-            <Loop src="/video/hero-loop.mp4" poster="/video/hero-loop.jpg" />
+            <Loop src="/video/hero-loop.mp4" srcSmall="/video/hero-loop-720.mp4" poster="/video/hero-loop.jpg" />
             <span className="glass glass--fig float">
               <span className="dot" />
               Fig. 01 — {HERO.figure}

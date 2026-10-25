@@ -42,6 +42,13 @@ show immediately, and the video loops stay on their poster frame. Loops pause wh
 **Imagery.** Every render and loop is licensed stock (Unsplash and Pexels), graded to the
 brand. `ASSETS.md` lists each file, its source and what was changed.
 
+## SEO
+
+`SEO-PROMPT.md` is the reusable prompt that optimizes the site for search and for answer
+engines; `SEO-REPORT.md` records the last run (Oct 25, 2026) and the steps only the owner
+can do (Search Console, Business Profile, the old domain). Structured data lives in
+`app/(site)/layout.tsx`; `public/llms.txt` describes the business for AI assistants.
+
 ## The previous homepage
 
 The chapter-based "Gravity System" homepage (May–October 2026) is kept two ways:

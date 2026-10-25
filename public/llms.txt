@@ -1,0 +1,55 @@
+# Sonder Digital Co.
+
+> A software and automation studio in Atlanta, Georgia. Sonder builds custom AI agents,
+> workflow automation, custom software and websites for established businesses, and the
+> founder designs and builds every system himself.
+
+Home: https://www.sonderdigitalco.com
+Start: https://calendly.com/chase-sonderdigital-co/30min (a 30-minute discovery call)
+Email: chase@sonderdigital-co.com
+
+## Who it is for
+
+Owners and operators of established businesses, most often companies that sell by
+quote or estimate and have years of customer history sitting in a CRM, a spreadsheet or
+an older system: commercial sign companies, trade-show exhibit houses, hardscape and
+outdoor-living contractors, pool and deck builders, generator dealers. Also private
+medical practices and clinics, nonprofits and youth sports organizations, and coaches
+and creatives who need a website that does a job.
+
+It is not for consumers, and it is not a lead-generation agency.
+
+## What Sonder builds
+
+- **Lead reactivation and quote follow-up.** Revives estimates that went quiet and
+  clients who stopped booking. Automatic, personal follow-up on a schedule, written
+  from the details of each quote; every reply stops the sequence and goes to the right
+  person. Installed on the quoting or booking system the business already uses.
+- **AI agents and intelligent systems.** AI receptionists, virtual assistants and
+  customer-support agents that answer questions, qualify leads and book appointments,
+  working from rules the owner approves.
+- **Voice AI receptionist.** A branded phone agent that answers every call 24/7, routes
+  it where it belongs and books appointments.
+- **Workflow automation and integrations.** Connects the tools a business already runs
+  (quoting, inbox, calendar, payments, CRM) so information moves on its own.
+- **Custom software and development.** Custom CRMs, internal dashboards, client portals,
+  business applications, and the websites and web applications customers see.
+- **Sales and customer systems.** Follow-up that actually happens: quote recovery,
+  re-booking, win-back and the CRM to track it.
+- **HOTMA policy updates for public housing authorities.** A gap check and board-ready
+  rewrite of an ACOP or HCV Administrative Plan for HUD's HOTMA income and asset rules.
+  Details: https://www.sonderdigitalco.com/housing-policy
+
+## How an engagement works
+
+Discover (a 30-minute call about how the business runs and where the opportunity is),
+Design (a written scope and fixed price), Build (built by the founder, with working
+versions shown as it goes, connected to the tools already in use), Refine (launch, then
+tuning on real use, with monthly care where wanted).
+
+## Other pages
+
+- https://www.sonderdigitalco.com/housing-policy — HOTMA ACOP and Admin Plan updates
+- https://www.sonderdigitalco.com/voice — 24/7 AI receptionist for plumbers
+- https://www.sonderdigitalco.com/garage-doors — 24/7 AI receptionist for garage door companies
+- https://www.sonderdigitalco.com/weddingdesk — Sonder Concierge, an inquiry desk for wedding venues
