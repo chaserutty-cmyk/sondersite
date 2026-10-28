@@ -6,6 +6,10 @@
       "destination": "/housing-policy/index.html"
     },
     {
+      "source": "/multifamily-policy",
+      "destination": "/multifamily-policy/index.html"
+    },
+    {
       "source": "/voice",
       "destination": "/voice/index.html"
     },

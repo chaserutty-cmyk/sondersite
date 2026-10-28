@@ -9,6 +9,7 @@ import { Logo, ArrowUpRight } from "@/components/ui";
 /** The other pages on this domain. Internal links help each of them rank. */
 const MORE = [
   { label: "HOTMA policy updates for housing authorities", href: "/housing-policy" },
+  { label: "HOTMA policy updates for HUD multifamily owners", href: "/multifamily-policy" },
   { label: "AI receptionist for plumbers", href: "/voice" },
   { label: "AI receptionist for garage door companies", href: "/garage-doors" },
   { label: "Sonder Concierge for wedding venues", href: "/weddingdesk" },

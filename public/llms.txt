@@ -39,6 +39,10 @@ It is not for consumers, and it is not a lead-generation agency.
 - **HOTMA policy updates for public housing authorities.** A gap check and board-ready
   rewrite of an ACOP or HCV Administrative Plan for HUD's HOTMA income and asset rules.
   Details: https://www.sonderdigitalco.com/housing-policy
+- **HOTMA policy updates for HUD multifamily owners and management agents.** A $500
+  policy review and $1,500 rewrite of a property's Tenant Selection Plan and EIV policies
+  and procedures for HUD's multifamily HOTMA guidance.
+  Details: https://www.sonderdigitalco.com/multifamily-policy
 
 ## How an engagement works
 
@@ -50,6 +54,7 @@ tuning on real use, with monthly care where wanted).
 ## Other pages
 
 - https://www.sonderdigitalco.com/housing-policy — HOTMA ACOP and Admin Plan updates
+- https://www.sonderdigitalco.com/multifamily-policy — HOTMA TSP and EIV policy updates for HUD multifamily owners
 - https://www.sonderdigitalco.com/voice — 24/7 AI receptionist for plumbers
 - https://www.sonderdigitalco.com/garage-doors — 24/7 AI receptionist for garage door companies
 - https://www.sonderdigitalco.com/weddingdesk — Sonder Concierge, an inquiry desk for wedding venues

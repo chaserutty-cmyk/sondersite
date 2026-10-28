@@ -91,6 +91,13 @@ const SERVICES = [
     url: `${SITE_ORIGIN}/housing-policy`,
     audience: "Executive directors of small public housing authorities.",
   },
+  {
+    name: "HOTMA policy updates for HUD multifamily owners and management agents",
+    description:
+      "A policy review and rewrite of a property's Tenant Selection Plan and EIV policies and procedures for HUD's multifamily HOTMA guidance.",
+    url: `${SITE_ORIGIN}/multifamily-policy`,
+    audience: "Owners and management agents of HUD-assisted multifamily properties.",
+  },
 ];
 
 const ORG_ID = `${SITE_ORIGIN}/#organization`;
