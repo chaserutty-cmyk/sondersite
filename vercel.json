@@ -20,6 +20,10 @@
     {
       "source": "/sign-quotes",
       "destination": "/sign-quotes/index.html"
+    },
+    {
+      "source": "/fcc-filing",
+      "destination": "/fcc-filing/index.html"
     }
   ]
 }

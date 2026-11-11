@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="FCC Robocall Mitigation Database recertification paperwork, prepared for independent voice providers before the March 1, 2027 deadline. Free filing check, five-business-day turnaround.">
+<link rel="canonical" href="https://www.sonderdigitalco.com/fcc-filing">
+<title>Sonder FCC Filing Prep</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a charcoal cover band with gold corner brackets opens the page, then ivory editorial sections
+   numbered "01 · LABEL" with hairline rules; two forms (quote, free check) anchor the conversion path. */
+:root{
+  --bg:#F4F0E7; --fg:#111111; --muted:#4B4944; --gold:#9A7A3D; --gold-soft:#9A7A3D;
+  --band:#ECE6D9; --band-fg:#111111; --band-muted:#4B4944; --band-hair:rgba(17,17,17,.16);
+  --hair:rgba(17,17,17,.16); --surface:#ECE6D9; --field:#FBF9F4; --ok:#5E7A4A;
+  --display:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#141311; --fg:#F1E9DC; --muted:#B9B2A4; --gold:#C1A56B; --gold-soft:#D4BC85;
+  --band:#1C1B18; --band-fg:#F1E9DC; --band-muted:#B9B2A4; --band-hair:rgba(241,233,220,.18);
+  --hair:rgba(241,233,220,.16); --surface:#1C1B18; --field:#1F1E1A; --ok:#8FAE78; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#141311; --fg:#F1E9DC; --muted:#B9B2A4; --gold:#C1A56B; --gold-soft:#D4BC85;
+  --band:#1C1B18; --band-fg:#F1E9DC; --band-muted:#B9B2A4; --band-hair:rgba(241,233,220,.18);
+  --hair:rgba(241,233,220,.16); --surface:#1C1B18; --field:#1F1E1A; --ok:#8FAE78; color-scheme:dark }
+
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--band)}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.1;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.rule{border:0;border-top:1px solid var(--hair);margin:0}
+.measure{max-width:62ch}
+.gold-i{font-style:italic;color:var(--gold-soft)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;padding:.85em 1.5em;border-radius:2px;font-family:var(--body);font-weight:600;font-size:15px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.btn-primary{background:var(--gold);color:#10100E;border-color:var(--gold)}
+.btn-primary:hover{background:var(--gold-soft);border-color:var(--gold-soft)}
+.btn-ghost{background:transparent;color:inherit;border-color:currentColor}
+.btn-ghost:hover{background:rgba(154,122,61,.12)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+
+/* header */
+.top{background:var(--band);color:var(--band-fg);position:sticky;top:env(safe-area-inset-top,0px);z-index:9;border-bottom:1px solid var(--band-hair)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.wordmark{font-family:var(--mono);letter-spacing:.42em;font-size:13px;font-weight:500;text-decoration:none;color:var(--band-fg)}
+.wordmark small{display:block;letter-spacing:.14em;font-size:10px;color:var(--band-muted);margin-top:2px}
+.top nav{display:flex;gap:18px;align-items:center;font-size:14px}
+.top nav a{color:var(--band-muted);text-decoration:none}
+.top nav a:hover{color:var(--band-fg)}
+.top nav .btn{padding:.55em 1.1em;font-size:13px}
+@media (max-width:640px){.top nav a:not(.btn){display:none}}
+
+/* hero */
+.hero{background:var(--band);color:var(--band-fg);position:relative;overflow:hidden;border-bottom:1px solid var(--band-hair)}
+.hero .wrap{position:relative;padding-block:72px 64px}
+.hero .wrap::before,.hero .wrap::after{content:"";position:absolute;width:34px;height:34px;border:1px solid var(--gold-soft);pointer-events:none}
+.hero .wrap::before{top:28px;left:max(16px,env(safe-area-inset-left,0px));border-right:0;border-bottom:0}
+.hero .wrap::after{bottom:28px;right:max(16px,env(safe-area-inset-right,0px));border-left:0;border-top:0}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:48px;align-items:end}
+.hero h1{font-size:clamp(40px,5.6vw,66px);margin:18px 0 26px;max-width:14ch;font-weight:500}
+.hero .lede{color:var(--band-muted);font-size:18px;max-width:58ch}
+.hero .lede strong{color:var(--band-fg);font-weight:500}
+.hero .cta-row{margin-top:32px}
+.hero .btn-ghost{color:var(--band-fg)}
+.hero .btn-ghost:hover{background:rgba(154,122,61,.12)}
+.promise{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid var(--band-hair);border-bottom:1px solid var(--band-hair)}
+.promise div{flex:1 1 200px;min-width:0;padding:16px 20px 16px 0;font-size:14px;color:var(--band-muted)}
+.promise div+div{border-left:1px solid var(--band-hair);padding-left:20px}
+.promise b{display:block;color:var(--band-fg);font-weight:500;font-family:var(--display);font-size:20px;line-height:1.2;margin-bottom:4px}
+.deadline{border:1px solid var(--band-hair);padding:28px 28px 24px;position:relative}
+.deadline .eyebrow{color:var(--gold-soft)}
+.deadline .date{font-family:var(--display);font-size:clamp(44px,5vw,58px);line-height:1;margin:14px 0 6px;font-weight:500}
+.deadline .days{font-family:var(--mono);font-size:13px;color:var(--band-muted);letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.deadline .days b{color:var(--gold-soft);font-weight:500}
+.deadline p.note{margin-top:18px;font-size:14px;color:var(--band-muted);line-height:1.55}
+@media (max-width:820px){.hero-grid{grid-template-columns:1fr;gap:36px}.hero .wrap{padding-block:56px 48px}.deadline{max-width:420px}}
+
+/* sections */
+section.sec{padding-block:72px}
+section.sec+section.sec{border-top:1px solid var(--hair)}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:32px 48px;align-items:start}
+.sec-head h2{font-size:clamp(32px,3.8vw,46px);margin-top:12px}
+.sec-head .side{padding-top:6px;color:var(--muted);font-size:17px}
+.sec-head .side p+p{margin-top:1em}
+.sec-head .side strong{color:var(--fg);font-weight:600}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr;gap:20px}}
+
+/* stakes */
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin-top:44px;border-top:1px solid var(--hair)}
+.stat{padding:26px 28px 26px 0;border-bottom:1px solid var(--hair)}
+.stat+.stat{border-left:1px solid var(--hair);padding-left:28px}
+.stat .n{font-family:var(--display);font-size:clamp(40px,4.5vw,56px);line-height:1;font-weight:500;font-variant-numeric:tabular-nums}
+.stat .n sup{font-size:.5em;color:var(--gold);vertical-align:top;top:.15em;position:relative;margin-right:.08em}
+.stat .l{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+.pull{margin-top:36px;padding:22px 0 22px 26px;border-left:2px solid var(--gold);font-family:var(--display);font-size:clamp(22px,2.6vw,28px);line-height:1.3;max-width:34ch;font-style:italic}
+.pull em{font-style:normal;color:var(--gold)}
+@media (max-width:560px){.stats{grid-template-columns:1fr}.stat+.stat{border-left:0;padding-left:0}}
+
+/* services */
+.svc{list-style:none;margin:44px 0 0;padding:0;border-top:1px solid var(--hair)}
+.svc li{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:8px 48px;padding:24px 0;border-bottom:1px solid var(--hair)}
+.svc h3{font-size:26px;display:flex;gap:14px;align-items:baseline}
+.svc h3::before{content:"";width:18px;height:1px;background:var(--gold);flex:none;position:relative;top:-6px}
+.svc p{color:var(--muted);max-width:52ch}
+@media (max-width:640px){.svc li{grid-template-columns:1fr}}
+
+/* steps */
+.steps{list-style:none;margin:44px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--hair);counter-reset:step}
+.steps li{padding:26px 24px 26px 0;border-bottom:1px solid var(--hair);counter-increment:step}
+.steps li+li{border-left:1px solid var(--hair);padding-left:24px}
+.steps .k{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--gold);font-weight:500}
+.steps .k::before{content:"Step 0" counter(step)}
+.steps h3{font-size:24px;margin:12px 0 10px}
+.steps p{color:var(--muted);font-size:15.5px}
+@media (max-width:900px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.steps li:nth-child(3){border-left:0;padding-left:0}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}.steps li+li{border-left:0;padding-left:0}}
+
+/* free check band */
+.check{background:var(--surface)}
+.check .wrap{padding-block:72px}
+.check-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+.check h2{font-size:clamp(34px,4vw,50px);margin-top:12px}
+.check h2 span{display:block;color:var(--gold);font-style:italic}
+.check .side p{color:var(--muted);max-width:50ch}
+.check .side p+p{margin-top:1em}
+@media (max-width:760px){.check-grid{grid-template-columns:1fr;gap:32px}}
+
+/* forms */
+form.f{display:grid;gap:16px;background:var(--field);border:1px solid var(--hair);padding:28px}
+.f label{display:grid;gap:6px;font-size:13.5px;font-weight:500}
+.f input[type=text],.f input[type=email],.f input[type=url],.f textarea,.f select{font:inherit;font-size:16px;padding:.7em .85em;border:1px solid var(--hair);border-radius:2px;background:var(--bg);color:var(--fg);width:100%;min-width:0}
+.f input:focus,.f textarea:focus{border-color:var(--gold);outline:none;box-shadow:0 0 0 2px rgba(154,122,61,.25)}
+.f textarea{min-height:96px;resize:vertical}
+.f .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:560px){.f .two{grid-template-columns:1fr}}
+.f fieldset{border:0;padding:0;margin:0;display:grid;gap:8px}
+.f legend{font-size:13.5px;font-weight:500;margin-bottom:8px;padding:0}
+.f .chk{display:flex;gap:10px;align-items:flex-start;font-size:15px;font-weight:400;line-height:1.4}
+.f .chk input{margin:.25em 0 0;accent-color:var(--gold);width:16px;height:16px;flex:none}
+.f .fine{font-size:13px;color:var(--muted)}
+.f .fine b{color:var(--fg);font-weight:500}
+.f button{justify-self:start}
+.sent{display:grid;gap:14px;background:var(--field);border:1px solid var(--gold);padding:28px}
+.sent h3{font-size:26px}
+.sent p{color:var(--muted);font-size:15px}
+.sent p b{color:var(--fg);font-weight:500}
+.sent .addr{font-family:var(--mono);font-size:14px;letter-spacing:.02em;user-select:all;color:var(--fg)}
+.sent pre{font:13.5px/1.5 var(--mono);white-space:pre-wrap;word-break:break-word;background:var(--bg);border:1px solid var(--hair);padding:16px;margin:0;max-height:260px;overflow:auto;user-select:all}
+.sent .cta-row .btn{font-size:14px;padding:.7em 1.2em}
+.sent .okmsg{font-size:13px;color:var(--ok);font-family:var(--mono);min-height:1.2em}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:32px 48px}
+.about h2{font-size:clamp(32px,3.8vw,46px);margin-top:12px}
+.who{margin-top:24px;padding-top:18px;border-top:1px solid var(--hair);max-width:320px}
+.who b{display:block;font-family:var(--display);font-size:24px;font-weight:500;line-height:1.15}
+.who span{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.about .body p{color:var(--muted)}
+.about .body p+p{margin-top:1em}
+.about .body p.lead{color:var(--fg);font-family:var(--display);font-size:24px;line-height:1.35}
+.about .cta-row{margin-top:32px}
+.q{font-size:15px;color:var(--muted)}
+.q .addr{font-family:var(--mono);font-size:14px;color:var(--fg);user-select:all}
+@media (max-width:760px){.about-grid{grid-template-columns:1fr;gap:24px}}
+
+/* quote section */
+.quote{background:var(--band);color:var(--band-fg);border-top:1px solid var(--band-hair)}
+.quote .wrap{padding-block:72px}
+.quote .eyebrow{color:var(--gold-soft)}
+.quote-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:48px;align-items:start}
+.quote h2{font-size:clamp(34px,4vw,50px);margin-top:12px}
+.quote .side p{color:var(--band-muted);max-width:46ch}
+.quote .side p+p{margin-top:1em}
+.quote .side ul{margin:22px 0 0;padding:0;list-style:none;display:grid;gap:10px;color:var(--band-fg);font-size:15.5px}
+.quote .side li{display:flex;gap:12px;align-items:baseline}
+.quote .side li::before{content:"";width:14px;height:1px;background:var(--gold-soft);flex:none;position:relative;top:-5px}
+.quote .btn-ghost{color:var(--band-fg)}
+@media (max-width:820px){.quote-grid{grid-template-columns:1fr;gap:32px}}
+
+/* footer */
+footer{padding-block:36px 44px;border-top:1px solid var(--hair)}
+footer .wrap{display:grid;gap:18px}
+footer .legal{font-size:13px;color:var(--muted);max-width:78ch;line-height:1.6;font-style:italic}
+footer .meta{display:flex;flex-wrap:wrap;gap:8px 24px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+
+@media (prefers-reduced-motion:no-preference){
+  .hero h1,.hero .lede,.hero .cta-row,.deadline{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+  .hero .lede{animation-delay:.08s}.hero .cta-row{animation-delay:.16s}.deadline{animation-delay:.22s}
+  @keyframes rise{from{opacity:.001;transform:translateY(10px)}to{opacity:1;transform:none}}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="wordmark" href="#top">SONDER<small>DIGITAL CO.</small></a>
+    <nav aria-label="Page">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a class="btn btn-primary" href="#quote">Request a Quote</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">FCC Filing Preparation for Small Voice Providers</p>
+        <h1>Get your FCC recertification paperwork taken care of <span class="gold-i">before March 1.</span></h1>
+        <p class="lede">The next Robocall Mitigation Database recertification deadline is <strong>March 1, 2027</strong>. At Sonder, we help independent VoIP and voice service providers review their existing filings, update robocall mitigation plans, and prepare the paperwork needed for recertification.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#quote">Request a Quote</a>
+          <a class="btn btn-ghost" href="#check">Get a Free Filing Check</a>
+        </div>
+      </div>
+      <aside class="deadline" aria-label="Recertification deadline">
+        <p class="eyebrow">Next RMD recertification deadline</p>
+        <p class="date">March 1, 2027</p>
+        <p class="days" id="days"><b>—</b> days from today</p>
+        <p class="note">Annual recertification is now required. Your filing should accurately reflect your company's current operations before this date.</p>
+      </aside>
+    </div>
+    <div class="promise">
+      <div><b>Company-specific documentation.</b>Prepared from your filing and your actual operating procedures, not a template.</div>
+      <div><b>Straightforward process.</b>One intake, one scope of work, one price. Your officer reviews and submits.</div>
+      <div><b>Five-business-day turnaround.</b>After complete intake, your filing package is ready for review within five business days.</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="stakes">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">01 · Why now</p>
+        <h2>The FCC is taking filing accuracy seriously.</h2>
+      </div>
+      <div class="side">
+        <p>The FCC removed nearly 1,400 providers from its Robocall Mitigation Database in August 2025, followed by another 14 in September 2026.</p>
+        <p>Removal can mean other U.S. providers must stop accepting your voice traffic.</p>
+        <p>With annual recertification now required, it's important that your filing accurately reflects your company's current operations.</p>
+        <p><strong>We help you get the documentation in order before the deadline.</strong></p>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n"><sup>~</sup>1,400</div><div class="l">Providers removed from the RMD · August 2025</div></div>
+      <div class="stat"><div class="n">14</div><div class="l">More removed · September 2026</div></div>
+    </div>
+    <blockquote class="pull">Removal can mean other U.S. providers must <em>stop accepting your voice traffic.</em></blockquote>
+  </div>
+</section>
+
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">02 · What we prepare</p>
+        <h2>FCC filing preparation, handled from start to finish.</h2>
+      </div>
+      <div class="side">
+        <p>Whether your company needs a few updates or a full documentation review, we'll help prepare the materials for your officer's review.</p>
+      </div>
+    </div>
+    <ul class="svc">
+      <li><h3>Robocall Mitigation Plans</h3><p>Review and update your existing plan based on current FCC requirements and your company's actual operating procedures.</p></li>
+      <li><h3>RMD Recertification</h3><p>Review your public filing, identify missing or outdated information, and prepare your recertification worksheet.</p></li>
+      <li><h3>CPNI Certification</h3><p>Prepare applicable annual certification materials and supporting documentation.</p></li>
+      <li><h3>Form 499-A Preparation</h3><p>Organize revenue information and prepare filing worksheets for your company's financial review.</p></li>
+      <li><h3>Filing Review &amp; Ongoing Updates</h3><p>Identify public-record inconsistencies, track required updates, and keep your filing documentation organized.</p></li>
+    </ul>
+    <div class="cta-row" style="margin-top:36px">
+      <a class="btn btn-primary" href="#quote">Get a Quote for Your Filings</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">03 · How it works</p>
+        <h2>Four steps, and your officer stays in control.</h2>
+      </div>
+      <div class="side">
+        <p>We prepare the documents. Your authorized officer reviews, confirms, and submits them.</p>
+      </div>
+    </div>
+    <ol class="steps">
+      <li><div class="k"></div><h3>Tell us what you need.</h3><p>Complete a short form with your company information and the filing assistance you're looking for.</p></li>
+      <li><div class="k"></div><h3>Receive your quote.</h3><p>We'll review your needs and provide a clear scope of work and price.</p></li>
+      <li><div class="k"></div><h3>We prepare your documents.</h3><p>Once we receive your completed intake information, we'll prepare your filing package for review.</p></li>
+      <li><div class="k"></div><h3>Review and submit.</h3><p>Your authorized officer reviews the documents, confirms their accuracy, and submits the applicable filings.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="check" id="check">
+  <div class="wrap">
+    <div class="check-grid">
+      <div class="side">
+        <p class="eyebrow">04 · Free filing check</p>
+        <h2>Not sure if your current filing needs updating? <span>We'll check it for free.</span></h2>
+        <p style="margin-top:22px">Send us your company name, and we'll review your publicly available RMD filing for information that may need attention before March 1.</p>
+        <p>You'll receive a short summary highlighting anything worth double-checking.</p>
+        <p><strong style="color:var(--fg);font-weight:600">No obligation.</strong></p>
+      </div>
+      <div>
+        <form class="f" id="checkForm" novalidate>
+          <label class="hp" aria-hidden="true" tabindex="-1" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden">Company website<input type="text" id="c_hp" name="company_website" tabindex="-1" autocomplete="off"></label>
+          <label>Company name (as listed in the RMD)<input type="text" id="c_company" name="company" required autocomplete="organization" placeholder="e.g. Northwind Voice LLC"></label>
+          <div class="two">
+            <label>Your name<input type="text" id="c_name" name="name" required autocomplete="name"></label>
+            <label>Work email<input type="email" id="c_email" name="email" required autocomplete="email"></label>
+          </div>
+          <label>Anything we should know? <span style="font-weight:400;color:var(--muted)">(optional)</span><textarea id="c_notes" name="notes" placeholder="Recent changes in ownership, carriers, or STIR/SHAKEN status, for example."></textarea></label>
+          <button class="btn btn-primary" type="submit">Get My Free Filing Check</button>
+          <p class="fine">We only look at what's already public. <b>No obligation</b>, and nothing is submitted to the FCC.</p>
+        </form>
+        <div class="sent" id="checkDone" hidden>
+          <h3>Got it. We'll take a look.</h3>
+          <p>Your free filing check request is in. We'll review the public RMD record for <b id="checkDoneCo"></b> and reply to <b id="checkDoneEmail"></b> with a short summary of anything worth double-checking.</p>
+          <p>No obligation. Nothing is submitted to the FCC.</p>
+        </div>
+        <div class="sent" id="checkSent" hidden>
+          <h3>One more step: send this from your mail app.</h3>
+          <p>Our form couldn't reach us just now. Send the message below to <span class="addr">chase@sonderdigital-co.com</span> and we'll reply with a short summary of anything worth double-checking.</p>
+          <pre id="checkBody"></pre>
+          <div class="cta-row">
+            <a class="btn btn-primary" id="checkMail" href="#">Open in your mail app</a>
+            <button class="btn btn-ghost" type="button" id="checkCopy">Copy message</button>
+          </div>
+          <p class="okmsg" id="checkOk"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <p class="eyebrow">05 · About Sonder</p>
+        <h2>Documents first. Always.</h2>
+        <div class="who"><b>Chase Rutty</b><span>Founder, Sonder Digital Co.</span></div>
+      </div>
+      <div class="body">
+        <p class="lead">Sonder helps organizations prepare complicated regulatory documents and filing materials.</p>
+        <p>Our work began with extensive regulatory policy documentation projects for housing organizations. We've built our approach around understanding published requirements, reviewing existing records, and preparing clear, organized documents for our clients.</p>
+        <p>We bring that same document-focused approach to FCC filing preparation for independent voice providers.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#quote">Request a Quote</a>
+          <p class="q">Questions? <span class="addr">chase@sonderdigital-co.com</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote" id="quote">
+  <div class="wrap">
+    <div class="quote-grid">
+      <div class="side">
+        <p class="eyebrow">06 · Request a quote</p>
+        <h2>Tell us what you need. <span class="gold-i">We'll scope it and price it.</span></h2>
+        <p style="margin-top:22px">A short form is all it takes. We'll reply with a clear scope of work and a single price, before any intake begins.</p>
+        <ul>
+          <li>Company-specific documentation, prepared from your filing and your procedures</li>
+          <li>Five-business-day turnaround after complete intake</li>
+          <li>Your authorized officer reviews, certifies, and submits</li>
+        </ul>
+      </div>
+      <div>
+        <form class="f" id="quoteForm" novalidate>
+          <label class="hp" aria-hidden="true" tabindex="-1" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden">Company website<input type="text" id="q_hp" name="company_website" tabindex="-1" autocomplete="off"></label>
+          <div class="two">
+            <label>Company name<input type="text" id="q_company" name="company" required autocomplete="organization"></label>
+            <label>Website <span style="font-weight:400;color:var(--muted)">(optional)</span><input type="url" id="q_site" name="site" autocomplete="url" placeholder="https://"></label>
+          </div>
+          <div class="two">
+            <label>Your name<input type="text" id="q_name" name="name" required autocomplete="name"></label>
+            <label>Work email<input type="email" id="q_email" name="email" required autocomplete="email"></label>
+          </div>
+          <fieldset>
+            <legend>Which filings do you need help with?</legend>
+            <label class="chk"><input type="checkbox" id="q_rmp" name="filings" value="Robocall Mitigation Plan review and update"> Robocall Mitigation Plan review and update</label>
+            <label class="chk"><input type="checkbox" id="q_rmd" name="filings" value="RMD recertification worksheet"> RMD recertification worksheet</label>
+            <label class="chk"><input type="checkbox" id="q_cpni" name="filings" value="CPNI certification materials"> CPNI certification materials</label>
+            <label class="chk"><input type="checkbox" id="q_499" name="filings" value="Form 499-A preparation"> Form 499-A preparation</label>
+            <label class="chk"><input type="checkbox" id="q_rev" name="filings" value="Filing review and ongoing updates"> Filing review and ongoing updates</label>
+            <label class="chk"><input type="checkbox" id="q_unsure" name="filings" value="Not sure yet"> Not sure yet, help me figure it out</label>
+          </fieldset>
+          <label>Anything else? <span style="font-weight:400;color:var(--muted)">(optional)</span><textarea id="q_notes" name="notes" placeholder="When you last updated your filing, how many lines or numbers you serve, your current STIR/SHAKEN status, and so on."></textarea></label>
+          <button class="btn btn-primary" type="submit">Request a Quote</button>
+          <p class="fine">We'll reply with a clear scope of work and price. <b>No commitment</b> until you approve the scope.</p>
+        </form>
+        <div class="sent" id="quoteDone" hidden>
+          <h3>Got it. Your quote is on its way.</h3>
+          <p>Your request for <b id="quoteDoneCo"></b> is in. We'll reply to <b id="quoteDoneEmail"></b> with a clear scope of work and price. No commitment until you approve the scope.</p>
+        </div>
+        <div class="sent" id="quoteSent" hidden>
+          <h3>One more step: send this from your mail app.</h3>
+          <p>Our form couldn't reach us just now. Send the message below to <span class="addr">chase@sonderdigital-co.com</span>. We'll reply with a clear scope of work and price.</p>
+          <pre id="quoteBody"></pre>
+          <div class="cta-row">
+            <a class="btn btn-primary" id="quoteMail" href="#">Open in your mail app</a>
+            <button class="btn btn-ghost" type="button" id="quoteCopy">Copy message</button>
+          </div>
+          <p class="okmsg" id="quoteOk"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="legal">Independent filing-preparation and documentation support. Sonder is not affiliated with the FCC and does not provide legal advice or regulatory representation. Providers remain responsible for verifying, certifying, and submitting their filings.</p>
+    <div class="meta"><span>Sonder Digital Co.</span><span>chase@sonderdigital-co.com</span><span>RMD recertification · March 1, 2027</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var TO = 'chase@sonderdigital-co.com';
+  // Days to the deadline, computed in the viewer's local time.
+  var d = document.getElementById('days');
+  if (d) {
+    var now = new Date(); now.setHours(0,0,0,0);
+    var due = new Date(2027, 2, 1);
+    var n = Math.round((due - now) / 86400000);
+    d.innerHTML = n > 0 ? '<b>' + n.toLocaleString() + '</b> days from today'
+                : n === 0 ? '<b>Due today</b>' : '<b>Passed</b> · next window is March 1, 2028';
+  }
+
+  function val(id){ var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+  function invalid(form){
+    var bad = null;
+    form.querySelectorAll('[required]').forEach(function(el){
+      var ok = el.value.trim() && (el.type !== 'email' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim()));
+      el.style.borderColor = ok ? '' : '#B5484A';
+      if (!ok && !bad) bad = el;
+    });
+    return bad;
+  }
+  var API = (location.protocol === 'http:' || location.protocol === 'https:') && location.hostname !== 'localhost' ? '/api/fcc-lead' : '';
+  function showFallback(form, sentId, bodyId, mailId, copyId, okId, subject, body){
+    document.getElementById(bodyId).textContent = body;
+    var mail = document.getElementById(mailId);
+    mail.href = 'mailto:' + TO + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    form.hidden = true;
+    var sent = document.getElementById(sentId); sent.hidden = false;
+    sent.scrollIntoView({behavior:'smooth', block:'nearest'});
+    document.getElementById(copyId).onclick = function(){
+      var ok = document.getElementById(okId);
+      function fallback(){ var r = document.createRange(); r.selectNodeContents(document.getElementById(bodyId)); var s = getSelection(); s.removeAllRanges(); s.addRange(r); ok.textContent = 'Selected. Press copy on your keyboard.'; }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(body).then(function(){ ok.textContent = 'Copied.'; }, fallback);
+      } else fallback();
+    };
+  }
+  function showDone(form, doneId, company, email){
+    document.getElementById(doneId + 'Co').textContent = company;
+    document.getElementById(doneId + 'Email').textContent = email;
+    form.hidden = true;
+    var done = document.getElementById(doneId); done.hidden = false;
+    done.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+  function wire(formId, sentId, bodyId, mailId, copyId, okId, subject, build, payload, doneId){
+    var form = document.getElementById(formId); if (!form) return;
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var bad = invalid(form); if (bad) { bad.focus(); return; }
+      var body = build();
+      var data = payload();
+      var btn = form.querySelector('button[type=submit]');
+      if (!API) { showFallback(form, sentId, bodyId, mailId, copyId, okId, subject, body); return; }
+      btn.disabled = true; var label = btn.textContent; btn.textContent = 'Sending…';
+      fetch(API, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)})
+        .then(function(r){ return r.json().then(function(j){ return {status: r.status, json: j}; }); })
+        .then(function(res){
+          if (res.json && res.json.ok) { showDone(form, doneId, data.company, data.email); return; }
+          if (res.status === 400 && res.json && res.json.fieldErrors) {
+            btn.disabled = false; btn.textContent = label;
+            var first = null;
+            Object.keys(res.json.fieldErrors).forEach(function(k){ var el = form.querySelector('[name=' + k + ']'); if (el) { el.style.borderColor = '#B5484A'; if (!first) first = el; } });
+            if (first) first.focus();
+            return;
+          }
+          throw new Error('unavailable');
+        })
+        .catch(function(){ btn.disabled = false; btn.textContent = label; showFallback(form, sentId, bodyId, mailId, copyId, okId, subject, body); });
+    });
+  }
+
+  wire('checkForm','checkSent','checkBody','checkMail','checkCopy','checkOk','Free filing check request', function(){
+    return 'Free filing check request\n\n' +
+      'Company (as listed in the RMD): ' + val('c_company') + '\n' +
+      'Name: ' + val('c_name') + '\n' +
+      'Email: ' + val('c_email') + '\n' +
+      (val('c_notes') ? '\nNotes:\n' + val('c_notes') + '\n' : '') +
+      '\nPlease review our public RMD filing for anything that may need attention before March 1, 2027.';
+  }, function(){
+    return {kind:'check', company: val('c_company'), name: val('c_name'), email: val('c_email'), notes: val('c_notes'), company_website: val('c_hp')};
+  }, 'checkDone');
+
+  wire('quoteForm','quoteSent','quoteBody','quoteMail','quoteCopy','quoteOk','Quote request: FCC filing preparation', function(){
+    var picked = Array.prototype.map.call(document.querySelectorAll('#quoteForm input[name=filings]:checked'), function(c){ return '  - ' + c.value; });
+    return 'Quote request: FCC filing preparation\n\n' +
+      'Company: ' + val('q_company') + '\n' +
+      (val('q_site') ? 'Website: ' + val('q_site') + '\n' : '') +
+      'Name: ' + val('q_name') + '\n' +
+      'Email: ' + val('q_email') + '\n' +
+      '\nFilings:\n' + (picked.length ? picked.join('\n') : '  - (not specified)') + '\n' +
+      (val('q_notes') ? '\nNotes:\n' + val('q_notes') + '\n' : '') +
+      '\nPlease send a scope of work and price.';
+  }, function(){
+    var picked = Array.prototype.map.call(document.querySelectorAll('#quoteForm input[name=filings]:checked'), function(c){ return c.value; });
+    return {kind:'quote', company: val('q_company'), site: val('q_site'), name: val('q_name'), email: val('q_email'), filings: picked, notes: val('q_notes'), company_website: val('q_hp')};
+  }, 'quoteDone');
+})();
+</script>
+</body>
+</html>
